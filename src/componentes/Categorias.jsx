@@ -1,4 +1,6 @@
 import '../css/categorias.css';
+import { ProductCard } from './ProductCard';
+
 
 import hamburger from '../assets/product_01.jpg';
 import hamburger1 from '../assets/product_01.1.jpg';
@@ -53,132 +55,52 @@ export const Categorias = () => {
                     {all ?
 
                         <>
-                            <div className="card">
-                                <img src={hamburger} alt="" />
-                                <span>Chicken Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={hamburger1} alt="" />
-                                <span>Meat Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={hamburger2} alt="" />
-                                <span>Fish Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={hamburger3} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={hamburger4} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={hamburger5} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
 
-                            {/* PIZZAS */}
+                            {/* ↓↓↓ HAMBURGESAS ↓↓↓ */}
 
-                            <div className="card">
-                                <img src={pizza} alt="" />
-                                <span>Chicken Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza1} alt="" />
-                                <span>Meat Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza2} alt="" />
-                                <span>Fish Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza3} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza4} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza5} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza6} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza7} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
+                            <ProductCard img={hamburger} nombre={'Chicken Burger'} precio={'$1600'}/>
+                            <ProductCard img={hamburger1} nombre={'Meat Burger'} precio={'$1500'}/>
+                            <ProductCard img={hamburger2} nombre={'Fish Burger'} precio={'$1900'}/>
+                            <ProductCard img={hamburger3} nombre={'Fish Burger'} precio={'$1200'}/>
+                            <ProductCard img={hamburger4} nombre={'Fish Burger'} precio={'$1300'}/>
+                            <ProductCard img={hamburger5} nombre={'Fish Burger'} precio={'$1400'}/>
+                            
+                            {/* ↓↓↓ PIZZAS ↓↓↓ */}
+
+                            <ProductCard img={pizza} nombre={'Chicken Burger'} precio={'$1600'}/>
+                            <ProductCard img={pizza1} nombre={'Meat Burger'} precio={'$1500'}/>
+                            <ProductCard img={pizza2} nombre={'Fish Burger'} precio={'$1900'}/>
+                            <ProductCard img={pizza3} nombre={'Fish Burger'} precio={'$1200'}/>
+                            <ProductCard img={pizza4} nombre={'Fish Burger'} precio={'$1300'}/>
+                            <ProductCard img={pizza5} nombre={'Fish Burger'} precio={'$1400'}/>
+                            <ProductCard img={pizza6} nombre={'Fish Burger'} precio={'$1400'}/>
+                            <ProductCard img={pizza7} nombre={'Fish Burger'} precio={'$1400'}/>
+                            
                         </>
                         : <></>}
 
                     {picza ?
 
                         <>
-                            <div className="card">
-                                <img src={pizza} alt="" />
-                                <span>Chicken Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza1} alt="" />
-                                <span>Meat Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza2} alt="" />
-                                <span>Fish Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza3} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza4} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza5} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza6} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={pizza7} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
+                            <ProductCard img={pizza} nombre={'Chicken Burger'} precio={'$1600'}/>
+                            <ProductCard img={pizza1} nombre={'Meat Burger'} precio={'$1500'}/>
+                            <ProductCard img={pizza2} nombre={'Fish Burger'} precio={'$1900'}/>
+                            <ProductCard img={pizza3} nombre={'Fish Burger'} precio={'$1200'}/>
+                            <ProductCard img={pizza4} nombre={'Fish Burger'} precio={'$1300'}/>
+                            <ProductCard img={pizza5} nombre={'Fish Burger'} precio={'$1400'}/>
+                            <ProductCard img={pizza6} nombre={'Fish Burger'} precio={'$1400'}/>
+                            <ProductCard img={pizza7} nombre={'Fish Burger'} precio={'$1400'}/>
                         </>
                         : <></>}
 
                         {hambur ? 
                         <>
-                            <div className="card">
-                                <img src={hamburger} alt="" />
-                                <span>Chicken Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={hamburger1} alt="" />
-                                <span>Meat Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={hamburger2} alt="" />
-                                <span>Fish Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={hamburger3} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={hamburger4} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
-                            <div className="card">
-                                <img src={hamburger5} alt="" />
-                                <span>Dog Burger</span>
-                            </div>
+                            <ProductCard img={hamburger} nombre={'Chicken Burger'} precio={'$1600'}/>
+                            <ProductCard img={hamburger1} nombre={'Meat Burger'} precio={'$1500'}/>
+                            <ProductCard img={hamburger2} nombre={'Fish Burger'} precio={'$1900'}/>
+                            <ProductCard img={hamburger3} nombre={'Fish Burger'} precio={'$1200'}/>
+                            <ProductCard img={hamburger4} nombre={'Fish Burger'} precio={'$1300'}/>
+                            <ProductCard img={hamburger5} nombre={'Fish Burger'} precio={'$1400'}/>
                         </> : <></>}
 
                 </div>

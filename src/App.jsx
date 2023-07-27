@@ -1,5 +1,6 @@
 import './App.css'
 import { BannerScreen } from './componentes/BannerScreen'
+import { Categorias } from './componentes/Categorias'
 
 function App() {
 
@@ -10,7 +11,8 @@ function App() {
       {/* NAVBAR */}
       
       {/* PANTALLA DE BIENVENIDA */}
-      <BannerScreen />     
+      <BannerScreen />
+      <Categorias />    
     </div>
     </>
   )

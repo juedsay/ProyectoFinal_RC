@@ -4,7 +4,7 @@ import "../css/bannerScreen.css"
 export const BannerScreen = () => {
     return (
         <>
-            <div className="container-w">
+            <div className="container-banner">
                 <div className="section1">
                     <h2>Una manera fácil de hacer un pedido</h2>
                     <h3>¿HAMBRIENTO?</h3>

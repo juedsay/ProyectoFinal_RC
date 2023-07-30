@@ -10,12 +10,50 @@ export const RegisterScreen = () => {
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const [repassword,setRePassword] = useState('');
-  const [msgErrorEmail, setMsgerroremail] = useState(false);
-  const [msgErrorPass, setMsgerrorpass] = useState(false);
+  const [errorNombre, setErrorNombre] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
+  const [errorRePassword, setErrorRePassword] = useState(false);
+  const [errorCD, setErrorCD] = useState(false);
   
 
   const handleLogin = (e) => {
     e.preventDefault();
+
+    if(nombre == ''){
+      setErrorNombre(true);
+    }
+    if(email == ''){
+      setErrorEmail(true);
+    }
+    if(password == ''){
+      setErrorPassword(true);
+      setErrorCD(false);
+    }
+    if(repassword == ''){
+      setErrorRePassword(true);
+      setErrorCD(false);
+    }
+    if(nombre !== '' && email !== '' && password !== '' && repassword !== ''){
+      if(password == repassword){
+        Swal.fire({
+          icon: 'success',
+          title: 'Registrado con exito!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          navigate('/')
+        }, 1500);
+      }else{
+        setErrorNombre(false);
+        setErrorEmail(false);
+        setErrorPassword(false);
+        setErrorRePassword(false);
+        setErrorCD(true);
+      }
+    }
+    
     
   }
 
@@ -24,17 +62,30 @@ export const RegisterScreen = () => {
         <div className="login-container">
             <form onSubmit={handleLogin}>
                 <input className='input-login' type="text" placeholder="Nombre" 
-                value={email} onChange={(e) => setEmail(e.target.value)}/>
+                value={nombre} onChange={(e) => setNombre(e.target.value)} maxLength={20}/>
+                 {errorNombre ? <>
+                <span className='msg-error'>Ingrese nombre</span> 
+                </> : ''}
                 <input className='input-login' type="email" placeholder="Email" 
                 value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <input className='input-login' type="text" placeholder="Contraseña" 
-                value={email} onChange={(e) => setEmail(e.target.value)}/>
+                 {errorEmail ? <>
+                <span className='msg-error'>Ingrese email</span> 
+                </> : ''}
+                <input className='input-login' type="password" placeholder="Contraseña" 
+                value={password} onChange={(e) => setPassword(e.target.value)} minLength={6} maxLength={12}/>
+                 {errorPassword ? <>
+                <span className='msg-error'>Ingrese contraseña</span> 
+                </> : ''}
                 <input className='input-login' type="password" placeholder="Repita contraseña" 
-                value={password} onChange={(e) => setPassword(e.target.value)}/>
+                value={repassword} onChange={(e) => setRePassword(e.target.value)} minLength={6} maxLength={12}/>
+                 {errorRePassword ? <>
+                <span className='msg-error'>Ingrese contraseña</span> 
+                </> : ''}
+                 {errorCD ? <>
+                <span className='msg-error'>Las contraseñas no coinciden</span> 
+                </> : ''}
                 <button className='btn-login'>Registrarse</button>
-            </form>
-            <span><a href="">No tienes cuenta? Create una</a></span>
-            
+            </form>            
         </div>
     </>
   )

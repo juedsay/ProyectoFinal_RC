@@ -1,7 +1,7 @@
 import entrega from "../assets/4741565.jpg"
 import "../css/bannerScreen.css"
 
-export const BannerScreen = () => {
+export const Banner = () => {
     return (
         <>
             <div className="container-banner">

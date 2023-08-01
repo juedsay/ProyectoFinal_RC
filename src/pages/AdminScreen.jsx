@@ -2,9 +2,11 @@ import '../css/adminScreen.css';
 import chickenBurger from '../assets/product_01.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseUser, faCartShopping, faUser, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import api from '../api/api'
 export const AdminScreen = () => {
 
+  // MANEJO DE SWITCHER DE CATEGORIAS ↓ ↓ ↓
   const [showUsers, setShowUsers] = useState(true);
   const [showProducts, setShowProducts] = useState(false);
   const [showPedidos, setShowPedidos] = useState(false);
@@ -16,7 +18,6 @@ export const AdminScreen = () => {
     setShowPedidos(false);
     setShowCuenta(false);
   }
-
   const handleShowProducts = () =>{
     setShowUsers(false);
     setShowProducts(true);
@@ -35,6 +36,27 @@ export const AdminScreen = () => {
     setShowPedidos(false);
     setShowCuenta(true);
   }
+  // // // / // // 
+
+  const [usuarios, setUsuarios] = useState([])
+
+  const obtenerUsuarios = async () => {
+    try {
+      const resp = await api.get('/admin/usuarios');
+      console.log(resp.data.usuarios)
+
+      setUsuarios(resp.data.usuarios);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    obtenerUsuarios();
+  }, []);
+  
+
+
   return (
     <>
     {/* <FontAwesomeIcon icon={faEnvelope} /> */}
@@ -61,30 +83,18 @@ export const AdminScreen = () => {
                 </tr>
               </thead>  
               <tbody>
-              <tr>
-                <td>Juan Cruz</td>
-                <td>juan@gmail.com</td>
-                <td>usuario</td>
-                <td>ACTIVO</td>
-                <td>❌</td>
-                <td>📝</td>
-              </tr> 
-              <tr>
-                <td>Juan Cruz</td>
-                <td>juan@gmail.com</td>
-                <td>usuario</td>
-                <td>ACTIVO</td>
-                <td>❌</td>
-                <td>📝</td>
-              </tr> 
-              <tr>
-                <td>Juan Cruz</td>
-                <td>juan@gmail.com</td>
-                <td>usuario</td>
-                <td>ACTIVO</td>
-                <td>❌</td>
-                <td>📝</td>
-              </tr> 
+              {
+                        usuarios.map(usuarios => (
+                            <tr key={usuarios._id}>
+                                <td>{usuarios.name}</td>
+                                <td>{usuarios.email}</td>
+                                <td>{usuarios.rol}</td>
+                                <td>{usuarios.estado}</td>
+                                <td>❌</td>
+                                <td>📝</td>
+                            </tr>
+                        ))
+                    }
               </tbody>
             </table>   
           </> : ''

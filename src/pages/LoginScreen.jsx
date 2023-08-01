@@ -13,6 +13,7 @@ export const LoginScreen = () => {
   const [msgErrorPass, setMsgerrorpass] = useState(false);
 
 
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setEmail(email.toLowerCase())
@@ -34,19 +35,40 @@ export const LoginScreen = () => {
           email,
           password
         })
-        console.log(resp.response);
+        // GUARDAMOS TOKEN EN LOCALSTORAGE
+        localStorage.setItem('token',resp.data.token);
+
+        const user = {
+          id: resp.data.id,
+          name: resp.data.name,
+          rol: resp.data.rol
+        };
+
+        localStorage.setItem('user',JSON.stringify(user));
+        Swal.fire({
+          icon: 'success',
+          title: resp.data.msg,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          if(user.rol == 'usuario'){
+            navigate('/');
+          }
+          navigate('/admin');
+        }, 1500);
+        
       } catch (error) {
-        console.log(error)
+        console.log(error.response.data.msg)
+        Swal.fire({
+          icon: 'error',
+          title: error.response.data.msg,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        
       }
-      Swal.fire({
-        icon: 'success',
-        title: 'Logueado con exito!',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      setTimeout(() => {
-        navigate('/')
-      }, 1500);
+      
     }
 
 

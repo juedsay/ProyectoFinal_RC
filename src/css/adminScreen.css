@@ -15,7 +15,6 @@
     border-bottom: 1px solid #ccc;
     margin-bottom: 5px;
     display: flex;
-
 }
 .secciones ul li span{
     margin-left: 10px;
@@ -23,6 +22,25 @@
 
 .secciones li:hover{
     cursor: pointer;
+}
+
+.tablas{
+    width: 100%;
+    border-radius: 5px;
+}
+.tablas thead th{
+    background-color: #ccc;
+    padding: 10px;
+    text-align: left;
+}
+.tablas tbody{
+    text-align: center;
+}
+.tablas tbody tr td{
+    text-overflow: ellipsis;
+}
+.img-prod{
+    width: 50px;
 }
 @media screen and (max-width: 768px){
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../css/login.css';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
+import api from '../api/api';
 
 export const LoginScreen = () => {
 
@@ -12,9 +13,11 @@ export const LoginScreen = () => {
   const [msgErrorPass, setMsgerrorpass] = useState(false);
 
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setEmail(email.toLowerCase())
+
+    // VALIDACIONES ↓
 
     if (email == '' && password == '') {
       setMsgerroremail(true)
@@ -24,6 +27,17 @@ export const LoginScreen = () => {
     } else if (password == '') {
       setMsgerrorpass(true)
     } else {
+
+      // PETICION A BASE DE DATOS
+      try {
+        const resp = await api.post('/auth/login', {
+          email,
+          password
+        })
+        console.log(resp.response);
+      } catch (error) {
+        console.log(error)
+      }
       Swal.fire({
         icon: 'success',
         title: 'Logueado con exito!',

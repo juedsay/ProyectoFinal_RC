@@ -60,7 +60,7 @@ export const RegisterScreen = () => {
   return (
     <>
         <div className="login-container">
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleLogin} className='form-login'>
               <div className="form-group">
                 <input className={errorNombre ? 'input-login input-login-error' : 'input-login'} type="text" placeholder="Nombre" 
                 value={nombre} onChange={(e) => setNombre(e.target.value)} maxLength={20}/>

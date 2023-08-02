@@ -45,7 +45,7 @@ export const LoginScreen = () => {
   return (
     <>
       <div className="login-container">
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} className='form-login'>
           <div className="form-group">
             <input className={msgErrorEmail ? 'input-login input-login-error' : 'input-login'} type="email" placeholder="Email"
               value={email} onChange={(e) => setEmail(e.target.value)} />

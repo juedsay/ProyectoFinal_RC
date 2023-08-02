@@ -60,30 +60,38 @@ export const RegisterScreen = () => {
   return (
     <>
         <div className="login-container">
-            <form onSubmit={handleLogin}>
-                <input className='input-login' type="text" placeholder="Nombre" 
+            <form onSubmit={handleLogin} className='form-login'>
+              <div className="form-group">
+                <input className={errorNombre ? 'input-login input-login-error' : 'input-login'} type="text" placeholder="Nombre" 
                 value={nombre} onChange={(e) => setNombre(e.target.value)} maxLength={20}/>
                  {errorNombre ? <>
-                <span className='msg-error'>Ingrese nombre</span> 
+                <span className='msg-error'>Ingrese un nombre</span> 
                 </> : ''}
-                <input className='input-login' type="email" placeholder="Email" 
+              </div>
+              <div className="form-group">
+                <input className={errorEmail ? 'input-login input-login-error' : 'input-login'} type="email" placeholder="Email" 
                 value={email} onChange={(e) => setEmail(e.target.value)}/>
                  {errorEmail ? <>
-                <span className='msg-error'>Ingrese email</span> 
+                <span className='msg-error'>Ingrese un email</span> 
                 </> : ''}
-                <input className='input-login' type="password" placeholder="Contraseña" 
+                </div>
+              <div className="form-group">
+                <input className={errorPassword ? 'input-login input-login-error' : 'input-login'} type="password" placeholder="Contraseña" 
                 value={password} onChange={(e) => setPassword(e.target.value)} minLength={6} maxLength={12}/>
                  {errorPassword ? <>
-                <span className='msg-error'>Ingrese contraseña</span> 
+                <span className='msg-error'>Ingrese una contraseña</span> 
                 </> : ''}
-                <input className='input-login' type="password" placeholder="Repita contraseña" 
+                </div>
+                <div className="form-group">
+                <input className={errorRePassword ? 'input-login input-login-error' : 'input-login'} type="password" placeholder="Repita contraseña" 
                 value={repassword} onChange={(e) => setRePassword(e.target.value)} minLength={6} maxLength={12}/>
                  {errorRePassword ? <>
-                <span className='msg-error'>Ingrese contraseña</span> 
+                <span className='msg-error'>Repita la contraseña</span> 
                 </> : ''}
                  {errorCD ? <>
                 <span className='msg-error'>Las contraseñas no coinciden</span> 
                 </> : ''}
+                </div>
                 <button className='btn-login'>Registrarse</button>
             </form>            
         </div>

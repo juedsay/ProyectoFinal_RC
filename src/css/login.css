@@ -4,27 +4,38 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 300px;
+    margin-top: 100px;
 }
 
-form{
+.form-login{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #cfcbff;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     margin-bottom: 20px;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: right;
 }
 
+.form-group{
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    margin-bottom: 8px;
+}
 .input-login{
-    border: 0;
-    border-bottom: 1px solid #4c4c4c;
-    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
     padding: 10px;
     background-color: transparent;
     width: 300px;
+    margin-bottom: 3px;
+}
+
+.input-login-error{
+    border-color: red;
 }
 .input-login::placeholder{
     color: #4c4c4c;
@@ -54,4 +65,5 @@ form{
     color: red;
     font-size: 10px;
     text-align: left;
+    margin-left: 10px;
 }

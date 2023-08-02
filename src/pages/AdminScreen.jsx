@@ -21,6 +21,18 @@ const customStyles = {
 };
 export const AdminScreen = () => {
 
+  const obtenerUsuarios = async () => {
+    try {
+      const resp = await api.get('/admin/usuarios');
+      setUsuarios(resp.data.usuarios);
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const [usuarios, setUsuarios] = useState([]);
+
   // MANEJO DE SWITCHER DE CATEGORIAS ↓ ↓ ↓
   const [showUsers, setShowUsers] = useState(true);
   const [showProducts, setShowProducts] = useState(false);
@@ -51,19 +63,29 @@ export const AdminScreen = () => {
     setShowPedidos(false);
     setShowCuenta(true);
   }
-  // // // / // // 
+  /////////////////////////////////////////////
 
-  const [usuarios, setUsuarios] = useState([])
+  const [idED, setIdED] = useState('');
+  const [usernameED, setUsernameED] = useState('');
+  const [emailED, setEmailED] = useState('');
+  const [estadoED, setEstadoED] = useState('');
+  const [rolED, setRolED] = useState('');
 
-  const obtenerUsuarios = async () => {
+  const editarUsuario = async (_id, name, email, estado, rol) => {
     try {
-      const resp = await api.get('/admin/usuarios');
-      console.log(resp.data.usuarios)
+			const resp = await api.put('admin/editarUsuario', {
+				_id,
+				name,
+				email,
+				estado,
+				rol,
+			});
 
-      setUsuarios(resp.data.usuarios);
-    } catch (error) {
-      console.log(error)
-    }
+			console.log(resp);
+      obtenerUsuarios();
+		} catch (error) {
+			console.log(error);
+		}
   }
 
   useEffect(() => {
@@ -73,11 +95,15 @@ export const AdminScreen = () => {
 
   // MODAL FUNCTIONS 
   let subtitle;
-  const [modalIsOpenEditar, setIsOpen] = useState(false);
+  const [modalIsOpenEditar, setIsOpenEditar] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-    console.log("si")
+  function openModalEditarUsuario(usuario) {
+    setIsOpenEditar(true);
+    setIdED(usuario._id);
+    setUsernameED(usuario.name);
+    setEmailED(usuario.email);
+    setEstadoED(usuario.estado);
+    setRolED(usuario.rol);
   }
 
   function afterOpenModal() {
@@ -86,34 +112,49 @@ export const AdminScreen = () => {
   }
 
   function closeModal() {
-    setIsOpen(false);
+    setIsOpenEditar(false);
   }
 
 
+  const handleEditar = (e) =>{
+    e.preventDefault();
+    editarUsuario(idED,usernameED, emailED, estadoED, rolED);
+    setTimeout(() => {
+      setIsOpenEditar(false);
+    }, "1000");
+  }
+
   return (
     <>
+
+      {/* MODAL EDITAR USUARIO */}
       <Modal
         isOpen={modalIsOpenEditar}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
-      > 
-      <h3>EDITAR USUARIO</h3>
+      >
+        <span>EDITAR USUARIO</span>
         <form className='form-editar'>
-          <input type="text" placeholder='Nombre' />
-          <input type="email" placeholder='email' />
-          <select name="select">
-            <option value="value1" selected>Habilitado</option>
-            <option value="value2">Deshabilitado</option>
+          <input type="text" placeholder='Nombre' value={usernameED} onChange={(e) => setUsernameED(e.target.value)} />
+          <input type="email" placeholder='email' value={emailED} onChange={(e) => setEmailED(e.target.value)} />
+          <select name="select" value={(estadoED)} onChange={(e) => setEstadoED(e.target.value)}>
+            <option>{estadoED}</option>
+            {estadoED == 'Habilitado' ? <>
+              <option>Deshabilitado</option>
+            </> : <option>Habilitado</option>}
           </select>
-          <select name="select">
-            <option value="value1" selected>Usuario</option>
-            <option value="value2">admin</option>
+          <select name="select" value={(rolED)} onChange={(e) => setRolED(e.target.value)}>
+          <option>{rolED}</option>
+            {estadoED == 'usuario' ? <>
+              <option>Usuario</option>
+            </> : <option>Admin</option>}
           </select>
-          <input type="text" />
+          <button className='btn-editar' onClick={handleEditar}>GUARDAR</button>
         </form>
       </Modal>
+
 
       <div className='admin-container'>
         <div className='secciones'>
@@ -139,14 +180,14 @@ export const AdminScreen = () => {
               </thead>
               <tbody>
                 {
-                  usuarios.map(usuarios => (
-                    <tr key={usuarios._id}>
-                      <td>{usuarios.name}</td>
-                      <td>{usuarios.email}</td>
-                      <td>{usuarios.rol}</td>
-                      <td>{usuarios.estado}</td>
+                  usuarios.map(usuario => (
+                    <tr key={usuario._id}>
+                      <td>{usuario.name}</td>
+                      <td>{usuario.email}</td>
+                      <td>{usuario.rol}</td>
+                      <td>{usuario.estado}</td>
                       <td>❌</td>
-                      <td onClick={openModal}>📝</td>
+                      <td onClick={() => openModalEditarUsuario(usuario)}>📝</td>
                     </tr>
                   ))
                 }

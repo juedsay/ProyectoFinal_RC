@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../css/login.css';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
+import api from '../api/api';
 
 export const LoginScreen = () => {
 
@@ -12,9 +13,12 @@ export const LoginScreen = () => {
   const [msgErrorPass, setMsgerrorpass] = useState(false);
 
 
-  const handleLogin = (e) => {
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     setEmail(email.toLowerCase())
+
+    // VALIDACIONES ↓
 
     if (email == '' && password == '') {
       setMsgerroremail(true)
@@ -24,15 +28,47 @@ export const LoginScreen = () => {
     } else if (password == '') {
       setMsgerrorpass(true)
     } else {
-      Swal.fire({
-        icon: 'success',
-        title: 'Logueado con exito!',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      setTimeout(() => {
-        navigate('/')
-      }, 1500);
+
+      // PETICION A BASE DE DATOS
+      try {
+        const resp = await api.post('/auth/login', {
+          email,
+          password
+        })
+        // GUARDAMOS TOKEN EN LOCALSTORAGE
+        localStorage.setItem('token',resp.data.token);
+
+        const user = {
+          id: resp.data.id,
+          name: resp.data.name,
+          rol: resp.data.rol
+        };
+
+        localStorage.setItem('user',JSON.stringify(user));
+        Swal.fire({
+          icon: 'success',
+          title: resp.data.msg,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          if(user.rol == 'usuario'){
+            navigate('/');
+          }
+          navigate('/admin');
+        }, 1500);
+        
+      } catch (error) {
+        console.log(error.response.data.msg)
+        Swal.fire({
+          icon: 'error',
+          title: error.response.data.msg,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        
+      }
+      
     }
 
 

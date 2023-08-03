@@ -11,7 +11,7 @@ export const ModalAgregarUsuario = ({show, handleClose}) => {
     const [password, setPassword] = useState('');
     const [repassword, setRepassword] = useState('');
 
-    const handleAgregar = (e) => {
+    const handleAgregar = async(e) => {
         e.preventDefault();
         if(name == '' || email == '' || password == '' || repassword == ''){
             swal({
@@ -28,12 +28,21 @@ export const ModalAgregarUsuario = ({show, handleClose}) => {
                 timer: 1500
               });
         }else{
-            swal({
-                icon: 'success',
-                text: 'Usuario agregado!',
-                button: false,
-                timer: 1500
-              });
+            try {
+                const resp = await api.post('/auth/register',{
+                    name,
+                    email,
+                    password
+                });
+                swal({
+                    text: resp.data.msg,
+                    button: false,
+                    timer: 1500
+                  });
+            } catch (error) {
+                console.log(error)
+            }
+            
         }
     }
   return (
@@ -43,7 +52,7 @@ export const ModalAgregarUsuario = ({show, handleClose}) => {
           <Modal.Title>Agregar usuario</Modal.Title>
         </Modal.Header>
         <form className='form-editar' onSubmit={handleAgregar}>
-          <input type="text" placeholder='Nombre' value={name} onChange={(e) => setName(e.target.value)} minLength={6}/>
+          <input type="text" placeholder='Nombre' value={name} onChange={(e) => setName(e.target.value)} maxLength={20}/>
           <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
           <input type="password" placeholder='Contraseña' value={password} onChange={(e) => setPassword(e.target.value)} minLength={6}/>
           <input type="password" placeholder='Repita contraseña' value={repassword} onChange={(e) => setRepassword(e.target.value)} minLength={6}/>

@@ -154,7 +154,7 @@ export const AdminScreen = () => {
               </thead>
               <tbody>
                 {
-                  usuarios.map(usuario => (
+                  usuarios.map((usuario) => (
                     <tr key={usuario._id}>
                       <td>{usuario.name}</td>
                       <td>{usuario.email}</td>

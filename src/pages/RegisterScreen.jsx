@@ -42,9 +42,9 @@ export const RegisterScreen = () => {
           showConfirmButton: false,
           timer: 1500
         })
-        setTimeout(() => {
-          navigate('/')
-        }, 1500);
+        // setTimeout(() => {
+        //   navigate('/')
+        // }, 1500);
       }else{
         setErrorNombre(false);
         setErrorEmail(false);

@@ -50,7 +50,7 @@ export const LoginScreen = () => {
           title: resp.data.msg,
           showConfirmButton: false,
           timer: 1500
-        })
+        });
         setTimeout(() => {
           if(user.rol == 'usuario'){
             navigate('/');

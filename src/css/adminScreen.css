@@ -69,9 +69,11 @@
 /* MODAL EDITAR */
 .form-editar{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin-top: 20px;
-    align-items: end;
+    width: 100%;
 }
 .form-editar input{
     height: 40px;

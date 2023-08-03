@@ -3,22 +3,10 @@ import chickenBurger from '../assets/product_01.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseUser, faCartShopping, faUser, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import api from '../api/api'
-import Modal from 'react-modal';
+import api from '../api/api';
+import { ModalEditarUsuario } from '../componentes/ModalEditarUsuario';
+import swal from 'sweetalert';
 
-
-Modal.setAppElement('#root');
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
 export const AdminScreen = () => {
 
   const obtenerUsuarios = async () => {
@@ -26,6 +14,14 @@ export const AdminScreen = () => {
       const resp = await api.get('/admin/usuarios');
       setUsuarios(resp.data.usuarios);
 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const eliminarUsuario = async (id) => {
+    try {
+     await api.delete(`/admin/usuario/${id}`);
     } catch (error) {
       console.log(error)
     }
@@ -65,95 +61,59 @@ export const AdminScreen = () => {
   }
   /////////////////////////////////////////////
 
-  const [idED, setIdED] = useState('');
-  const [usernameED, setUsernameED] = useState('');
-  const [emailED, setEmailED] = useState('');
-  const [estadoED, setEstadoED] = useState('');
-  const [rolED, setRolED] = useState('');
-
-  const editarUsuario = async (_id, name, email, estado, rol) => {
-    try {
-			const resp = await api.put('admin/editarUsuario', {
-				_id,
-				name,
-				email,
-				estado,
-				rol,
-			});
-
-			console.log(resp);
-      obtenerUsuarios();
-		} catch (error) {
-			console.log(error);
-		}
-  }
-
   useEffect(() => {
     obtenerUsuarios();
-  }, []);
+  });
 
+  // ESTADOS Y FUNCTION PARA EDITAR USUARIO
+  const [show, setShow] = useState(false);
+  const [usuarioSelected, setUsuarioSelected] = useState([]);
 
-  // MODAL FUNCTIONS 
-  let subtitle;
-  const [modalIsOpenEditar, setIsOpenEditar] = useState(false);
+  const closeEditUsuario = () =>{
+    setShow(false)
+  };
+  const showEditUsuario = (usuario) => {
+    setUsuarioSelected(usuario);
+    setShow(true)
+  };
 
-  function openModalEditarUsuario(usuario) {
-    setIsOpenEditar(true);
-    setIdED(usuario._id);
-    setUsernameED(usuario.name);
-    setEmailED(usuario.email);
-    setEstadoED(usuario.estado);
-    setRolED(usuario.rol);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpenEditar(false);
-  }
-
-
-  const handleEditar = (e) =>{
-    e.preventDefault();
-    editarUsuario(idED,usernameED, emailED, estadoED, rolED);
-    setTimeout(() => {
-      setIsOpenEditar(false);
-    }, "1000");
+  // ELIMINAR USUARIO
+  const handleEliminarUsuario = (id) => {
+    swal({
+      title: 'Seguro desea eliminar?',
+      icon: "warning",
+      buttons: ["NO","SI"]
+    }).then(resp=>{
+      if(resp){
+        eliminarUsuario(id);
+        swal({
+          text: "Usuario eliminado",
+          icon: "success",
+          timer: "1500"
+        })
+      }
+    })
   }
 
   return (
     <>
 
-      {/* MODAL EDITAR USUARIO */}
-      <Modal
-        isOpen={modalIsOpenEditar}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <span>EDITAR USUARIO</span>
-        <form className='form-editar'>
-          <input type="text" placeholder='Nombre' value={usernameED} onChange={(e) => setUsernameED(e.target.value)} />
-          <input type="email" placeholder='email' value={emailED} onChange={(e) => setEmailED(e.target.value)} />
-          <select name="select" value={(estadoED)} onChange={(e) => setEstadoED(e.target.value)}>
-            <option>{estadoED}</option>
-            {estadoED == 'Habilitado' ? <>
-              <option>Deshabilitado</option>
-            </> : <option>Habilitado</option>}
-          </select>
-          <select name="select" value={(rolED)} onChange={(e) => setRolED(e.target.value)}>
-          <option>{rolED}</option>
-            {estadoED == 'usuario' ? <>
-              <option>Usuario</option>
-            </> : <option>Admin</option>}
-          </select>
-          <button className='btn-editar' onClick={handleEditar}>GUARDAR</button>
-        </form>
-      </Modal>
+      {
+        show ? 
+      
+      <ModalEditarUsuario 
+      show={showEditUsuario} 
+      handleClose={closeEditUsuario}
+      id={usuarioSelected._id}
+      name={usuarioSelected.name}
+      email={usuarioSelected.email}
+      estado={usuarioSelected.estado}
+      rol={usuarioSelected.rol}
+      /> : <></>
+
+      }
+
+  
 
 
       <div className='admin-container'>
@@ -176,6 +136,7 @@ export const AdminScreen = () => {
                   <th>ESTADO</th>
                   <th>ELIMINAR</th>
                   <th>EDITAR</th>
+                  <th>Agregar</th>
                 </tr>
               </thead>
               <tbody>
@@ -186,8 +147,8 @@ export const AdminScreen = () => {
                       <td>{usuario.email}</td>
                       <td>{usuario.rol}</td>
                       <td>{usuario.estado}</td>
-                      <td>❌</td>
-                      <td onClick={() => openModalEditarUsuario(usuario)}>📝</td>
+                      <td onClick={() => handleEliminarUsuario(usuario._id)}>❌</td>
+                      <td onClick={() => showEditUsuario(usuario)} >📝</td>
                     </tr>
                   ))
                 }

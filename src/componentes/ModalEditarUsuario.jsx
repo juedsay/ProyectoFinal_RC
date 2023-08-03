@@ -11,6 +11,7 @@ export const ModalEditarUsuario = ({ show, handleClose, id, name, email, estado,
   const [emaiL, setEmail] = useState(email);
   const [estadO, setEstado] = useState(estado);
   const [roL, setRol] = useState(rol);
+
   const editarUsuario = async (_id, name, email, estado, rol) => {
     try {
 			const resp = await api.put('admin/editarUsuario', {
@@ -22,8 +23,8 @@ export const ModalEditarUsuario = ({ show, handleClose, id, name, email, estado,
 			});
 			swal({
         icon: 'success',
-        title: 'Producto actualizado!',
-        showConfirmButton: false,
+        text: 'Producto actualizado!',
+        button: false,
         timer: 1000
       });
 
@@ -34,12 +35,12 @@ export const ModalEditarUsuario = ({ show, handleClose, id, name, email, estado,
 
   const handleEditar = (e) => {
     e.preventDefault();
-    if(namE.length == 0){
+    if(namE.length == 0 || emaiL.length == 0){
       swal({
         icon: 'error',
-        title: 'Ingrese el nombre!',
-        showConfirmButton: false,
-        timer: 1000
+        text: 'Complete los campos que faltan.',
+        button: false,
+        timer: 1500
       });
     }else{
       editarUsuario(id,namE,emaiL,estadO,roL);

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import api from '../api/api';
 import { ModalEditarUsuario } from '../componentes/ModalEditarUsuario';
 import swal from 'sweetalert';
+import { ModalAgregarUsuario } from '../componentes/ModalAgregarUsuario';
 
 export const AdminScreen = () => {
 
@@ -65,17 +66,23 @@ export const AdminScreen = () => {
     obtenerUsuarios();
   });
 
-  // ESTADOS Y FUNCTION PARA EDITAR USUARIO
-  const [show, setShow] = useState(false);
+  // ESTADOS Y FUNCTION PARA MODAL EDITAR USUARIO
+  const [showEditUser, setShowEditarUsuario] = useState(false);
   const [usuarioSelected, setUsuarioSelected] = useState([]);
 
   const closeEditUsuario = () =>{
-    setShow(false)
+    setShowEditarUsuario(false)
   };
   const showEditUsuario = (usuario) => {
     setUsuarioSelected(usuario);
-    setShow(true)
+    setShowEditarUsuario(true)
   };
+
+  // ESTADOS y FUNCIONES PARA MODAL AGREGAR USUARIO
+  const [showAddUsuario, setShowAddUsuario] = useState(false);
+
+  const handleCloseAddUser = () => setShowAddUsuario(false);
+  const handleShowAddUser = () => setShowAddUsuario(true);
 
   // ELIMINAR USUARIO
   const handleEliminarUsuario = (id) => {
@@ -99,7 +106,7 @@ export const AdminScreen = () => {
     <>
 
       {
-        show ? 
+        showEditUser ? 
       
       <ModalEditarUsuario 
       show={showEditUsuario} 
@@ -112,7 +119,13 @@ export const AdminScreen = () => {
       /> : <></>
 
       }
-
+      {
+        showAddUsuario ? 
+        <ModalAgregarUsuario 
+        show={handleShowAddUser}
+        handleClose={handleCloseAddUser}
+        /> : <></>
+      }
   
 
 
@@ -136,7 +149,7 @@ export const AdminScreen = () => {
                   <th>ESTADO</th>
                   <th>ELIMINAR</th>
                   <th>EDITAR</th>
-                  <th>Agregar</th>
+                  <th onClick={handleShowAddUser}>Agregar</th>
                 </tr>
               </thead>
               <tbody>

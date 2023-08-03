@@ -54,8 +54,9 @@ export const LoginScreen = () => {
         setTimeout(() => {
           if(user.rol == 'usuario'){
             navigate('/');
+          }else{
+            navigate('/admin');
           }
-          navigate('/admin');
         }, 1500);
         
       } catch (error) {

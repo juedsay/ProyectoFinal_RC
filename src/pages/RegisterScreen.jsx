@@ -2,11 +2,12 @@ import { useState } from 'react';
 import '../css/login.css';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
+import api from '../api/api';
 
 export const RegisterScreen = () => {
 
   const navigate = useNavigate();
-  const [nombre,setNombre] = useState('');
+  const [name,setNombre] = useState('');
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const [repassword,setRePassword] = useState('');
@@ -17,10 +18,10 @@ export const RegisterScreen = () => {
   const [errorCD, setErrorCD] = useState(false);
   
 
-  const handleLogin = (e) => {
+  const handleLogin = async(e) => {
     e.preventDefault();
 
-    if(nombre == ''){
+    if(name == ''){
       setErrorNombre(true);
     }
     if(email == ''){
@@ -34,17 +35,31 @@ export const RegisterScreen = () => {
       setErrorRePassword(true);
       setErrorCD(false);
     }
-    if(nombre !== '' && email !== '' && password !== '' && repassword !== ''){
+    if(name !== '' && email !== '' && password !== '' && repassword !== ''){
       if(password == repassword){
-        Swal.fire({
-          icon: 'success',
-          title: 'Registrado con exito!',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        // setTimeout(() => {
-        //   navigate('/')
-        // }, 1500);
+        try {
+          const resp = await api.post('/auth/register',{
+            name,
+            email,
+            password
+          });
+          Swal.fire({
+            icon: 'success',
+            title: resp.data.msg,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setTimeout(() => {
+            navigate('/')
+          }, 1500);
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: error.response.data.msg,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       }else{
         setErrorNombre(false);
         setErrorEmail(false);
@@ -63,7 +78,7 @@ export const RegisterScreen = () => {
             <form onSubmit={handleLogin} className='form-login'>
               <div className="form-group">
                 <input className={errorNombre ? 'input-login input-login-error' : 'input-login'} type="text" placeholder="Nombre" 
-                value={nombre} onChange={(e) => setNombre(e.target.value)} maxLength={20}/>
+                value={name} onChange={(e) => setNombre(e.target.value)} maxLength={20}/>
                  {errorNombre ? <>
                 <span className='msg-error'>Ingrese un nombre</span> 
                 </> : ''}

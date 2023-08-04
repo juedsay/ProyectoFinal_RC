@@ -14,7 +14,6 @@ export const AdminScreen = () => {
     try {
       const resp = await api.get('/admin/usuarios');
       setUsuarios(resp.data.usuarios);
-
     } catch (error) {
       console.log(error)
     }

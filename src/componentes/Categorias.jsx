@@ -1,27 +1,13 @@
 import '../css/categorias.css';
 import { ProductCard } from './ProductCard';
 
-
-import hamburger from '../assets/product_01.jpg';
-import hamburger1 from '../assets/product_01.1.jpg';
-import hamburger2 from '../assets/product_01.3.jpg';
-import hamburger3 from '../assets/product_04.jpg';
-import hamburger4 from '../assets/product_08.jpg';
-import hamburger5 from '../assets/product_09.jpg';
-import pizza from '../assets/product_2.1.jpg';
-import pizza1 from '../assets/product_2.2.jpg';
-import pizza2 from '../assets/product_2.3.jpg';
-import pizza3 from '../assets/product_3.2.jpg';
-import pizza4 from '../assets/product_3.3.jpg';
-import pizza5 from '../assets/product_4.1.jpg';
-import pizza6 from '../assets/product_4.2.jpg';
-import pizza7 from '../assets/product_4.3.png';
-
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import api from '../api/api';
 export const Categorias = () => {
 
     const [hambur, setHamburger] = useState(false);
     const [picza, setPizza] = useState(false);
+    const [papas, setPapas] = useState(false);
     const [all, setAll] = useState(true);
 
     const handleHamburger = () => {
@@ -39,6 +25,27 @@ export const Categorias = () => {
         setHamburger(false);
         setAll(false);
     }
+    const handlePapas = () => {
+        setPapas(true);
+        setPizza(false);
+        setHamburger(false);
+        setAll(false);
+    }
+
+    
+    const obtenerProductos = async () => {
+        try {
+            const products = await api.get('/admin/productos');
+            setProductos(products.data.productos)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const [productos, setProductos] = useState([]);
+    
+    useEffect(() => {
+        obtenerProductos();
+    },[]);
 
     return (
         <>
@@ -48,7 +55,7 @@ export const Categorias = () => {
                     <button onClick={handleAll} className={all ? 'btn-active' : ''}>Todo</button>
                     <button onClick={handelPizza} className={picza ? 'btn-active' : ''}>Pizzas</button>
                     <button onClick={handleHamburger} className={hambur ? 'btn-active' : ''}>Hamburguesas</button>
-                    <button>Papas</button>
+                    <button onClick={handlePapas} className={papas ? 'btn-active' : ''}>Papas</button>
                 </div>
                 <div className='cards-container'>
 
@@ -56,51 +63,47 @@ export const Categorias = () => {
 
                         <>
 
-                            {/* ↓↓↓ HAMBURGESAS ↓↓↓ */}
+{
+                                productos.map((prod) => {                             
+                                        return <ProductCard key={prod._id} img={prod.imagen} nombre={prod.nombre} precio={prod.precio} />                                  
+                                })
+                            }
 
-                            <ProductCard img={hamburger} nombre={'Chicken Burger'} precio={'$1600'}/>
-                            <ProductCard img={hamburger1} nombre={'Meat Burger'} precio={'$1500'}/>
-                            <ProductCard img={hamburger2} nombre={'Fish Burger'} precio={'$1900'}/>
-                            <ProductCard img={hamburger3} nombre={'Fish Burger'} precio={'$1200'}/>
-                            <ProductCard img={hamburger4} nombre={'Fish Burger'} precio={'$1300'}/>
-                            <ProductCard img={hamburger5} nombre={'Fish Burger'} precio={'$1400'}/>
-                            
-                            {/* ↓↓↓ PIZZAS ↓↓↓ */}
-
-                            <ProductCard img={pizza} nombre={'Chicken Burger'} precio={'$1600'}/>
-                            <ProductCard img={pizza1} nombre={'Meat Burger'} precio={'$1500'}/>
-                            <ProductCard img={pizza2} nombre={'Fish Burger'} precio={'$1900'}/>
-                            <ProductCard img={pizza3} nombre={'Fish Burger'} precio={'$1200'}/>
-                            <ProductCard img={pizza4} nombre={'Fish Burger'} precio={'$1300'}/>
-                            <ProductCard img={pizza5} nombre={'Fish Burger'} precio={'$1400'}/>
-                            <ProductCard img={pizza6} nombre={'Fish Burger'} precio={'$1400'}/>
-                            <ProductCard img={pizza7} nombre={'Fish Burger'} precio={'$1400'}/>
-                            
                         </>
                         : <></>}
 
                     {picza ?
 
                         <>
-                            <ProductCard img={pizza} nombre={'Chicken Burger'} precio={'$1600'}/>
-                            <ProductCard img={pizza1} nombre={'Meat Burger'} precio={'$1500'}/>
-                            <ProductCard img={pizza2} nombre={'Fish Burger'} precio={'$1900'}/>
-                            <ProductCard img={pizza3} nombre={'Fish Burger'} precio={'$1200'}/>
-                            <ProductCard img={pizza4} nombre={'Fish Burger'} precio={'$1300'}/>
-                            <ProductCard img={pizza5} nombre={'Fish Burger'} precio={'$1400'}/>
-                            <ProductCard img={pizza6} nombre={'Fish Burger'} precio={'$1400'}/>
-                            <ProductCard img={pizza7} nombre={'Fish Burger'} precio={'$1400'}/>
+                            {
+                                productos.map((prod) => {
+                                    if (prod.categoria == 'Pizza') {
+                                        return <ProductCard key={prod._id} img={prod.imagen} nombre={prod.nombre} precio={prod.precio} />
+                                    }
+                                })
+                            }
                         </>
                         : <></>}
 
-                        {hambur ? 
+                    {hambur ?
                         <>
-                            <ProductCard img={hamburger} nombre={'Chicken Burger'} precio={'$1600'}/>
-                            <ProductCard img={hamburger1} nombre={'Meat Burger'} precio={'$1500'}/>
-                            <ProductCard img={hamburger2} nombre={'Fish Burger'} precio={'$1900'}/>
-                            <ProductCard img={hamburger3} nombre={'Fish Burger'} precio={'$1200'}/>
-                            <ProductCard img={hamburger4} nombre={'Fish Burger'} precio={'$1300'}/>
-                            <ProductCard img={hamburger5} nombre={'Fish Burger'} precio={'$1400'}/>
+                            {
+                                productos.map((prod) => {
+                                    if (prod.categoria == 'Hambur') {
+                                        return <ProductCard key={prod._id} img={prod.imagen} nombre={prod.nombre} precio={prod.precio} />
+                                    }
+                                })
+                            }
+                        </> : <></>}
+                    {papas ?
+                        <>
+                            {
+                                productos.map((prod) => {
+                                    if (prod.categoria == 'Papas') {
+                                        return <ProductCard key={prod._id} img={prod.imagen} nombre={prod.nombre} precio={prod.precio} />
+                                    }
+                                })
+                            }
                         </> : <></>}
 
                 </div>

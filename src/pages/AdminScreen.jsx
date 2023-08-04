@@ -1,37 +1,92 @@
 import '../css/adminScreen.css';
-import chickenBurger from '../assets/product_01.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseUser, faCartShopping, faUser, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import api from '../api/api'
-import Modal from 'react-modal';
+import api from '../api/api';
+import { ModalEditarUsuario } from '../componentes/ModalEditarUsuario';
+import { ModalAgregarUsuario } from '../componentes/ModalAgregarUsuario';
+import { ModalEditarProducto } from '../componentes/ModalEditarProducto';
 
+import swal from 'sweetalert';
 
-Modal.setAppElement('#root');
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
 export const AdminScreen = () => {
 
   const obtenerUsuarios = async () => {
     try {
       const resp = await api.get('/admin/usuarios');
       setUsuarios(resp.data.usuarios);
-
     } catch (error) {
       console.log(error)
     }
   }
 
+  const eliminarUsuario = async (id) => {
+    try {
+      await api.delete(`/admin/usuario/${id}`);
+      obtenerUsuarios();
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const obtenerProductos = async () => {
+    try {
+      const resp = await api.get('/admin/productos');
+      setProductos(resp.data.productos);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const eliminarProducto = async (id) => {
+    try {
+      await api.delete(`/admin/producto/${id}`);
+      obtenerProductos();
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // ELIMINAR USUARIO
+  const handleEliminarUsuario = (id) => {
+    swal({
+      title: 'Seguro desea eliminar?',
+      icon: "warning",
+      buttons: ["NO", "SI"]
+    }).then(resp => {
+      if (resp) {
+        eliminarUsuario(id);
+        swal({
+          text: "Usuario eliminado.",
+          icon: "success",
+          timer: "1500"
+        })
+
+      }
+    })
+  }
+
+  // ELIMINAR PRODUCTO
+  const handleEliminarProducto = (id) => {
+    swal({
+      title: 'Seguro desea eliminar?',
+      icon: "warning",
+      buttons: ["NO", "SI"]
+    }).then(resp => {
+      if (resp) {
+        eliminarProducto(id);
+        swal({
+          text: "Producto eliminado.",
+          icon: "success",
+          timer: "1500"
+        })
+
+      }
+    })
+  }
+
   const [usuarios, setUsuarios] = useState([]);
+  const [productos, setProductos] = useState([]);
 
   // MANEJO DE SWITCHER DE CATEGORIAS ↓ ↓ ↓
   const [showUsers, setShowUsers] = useState(true);
@@ -65,95 +120,85 @@ export const AdminScreen = () => {
   }
   /////////////////////////////////////////////
 
-  const [idED, setIdED] = useState('');
-  const [usernameED, setUsernameED] = useState('');
-  const [emailED, setEmailED] = useState('');
-  const [estadoED, setEstadoED] = useState('');
-  const [rolED, setRolED] = useState('');
-
-  const editarUsuario = async (_id, name, email, estado, rol) => {
-    try {
-			const resp = await api.put('admin/editarUsuario', {
-				_id,
-				name,
-				email,
-				estado,
-				rol,
-			});
-
-			console.log(resp);
-      obtenerUsuarios();
-		} catch (error) {
-			console.log(error);
-		}
-  }
-
   useEffect(() => {
     obtenerUsuarios();
+    obtenerProductos();
   }, []);
 
+  // ESTADOS Y FUNCTION PARA MODAL EDITAR USUARIO
+  const [showEditUser, setShowEditarUsuario] = useState(false);
+  const [usuarioSelected, setUsuarioSelected] = useState([]);
 
-  // MODAL FUNCTIONS 
-  let subtitle;
-  const [modalIsOpenEditar, setIsOpenEditar] = useState(false);
+  const closeEditUsuario = () => {
+    setShowEditarUsuario(false);
+    obtenerUsuarios();
+  };
+  const showEditUsuario = (usuario) => {
+    setUsuarioSelected(usuario);
+    setShowEditarUsuario(true)
+  };
 
-  function openModalEditarUsuario(usuario) {
-    setIsOpenEditar(true);
-    setIdED(usuario._id);
-    setUsernameED(usuario.name);
-    setEmailED(usuario.email);
-    setEstadoED(usuario.estado);
-    setRolED(usuario.rol);
-  }
+  // ESTADOS y FUNCIONES PARA MODAL AGREGAR USUARIO
+  const [showAddUsuario, setShowAddUsuario] = useState(false);
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
+  const handleCloseAddUser = () => setShowAddUsuario(false);
+  const handleShowAddUser = () => setShowAddUsuario(true);
 
-  function closeModal() {
-    setIsOpenEditar(false);
-  }
+  // ESTADOS Y FUNCTION PARA MODAL EDITAR PRODUCTO
+  const [showEditProd, setShowEditProd] = useState(false);
+  const [prodSelected, setProdSelected] = useState([]);
 
+  const closeEditProd = () => {
+    setShowEditProd(false);
+    obtenerProductos();
+  };
+  const showEditProducto = (producto) => {
+    setProdSelected(producto);
+    setShowEditProd(true);
+  };
 
-  const handleEditar = (e) =>{
-    e.preventDefault();
-    editarUsuario(idED,usernameED, emailED, estadoED, rolED);
-    setTimeout(() => {
-      setIsOpenEditar(false);
-    }, "1000");
-  }
 
   return (
     <>
 
-      {/* MODAL EDITAR USUARIO */}
-      <Modal
-        isOpen={modalIsOpenEditar}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <span>EDITAR USUARIO</span>
-        <form className='form-editar'>
-          <input type="text" placeholder='Nombre' value={usernameED} onChange={(e) => setUsernameED(e.target.value)} />
-          <input type="email" placeholder='email' value={emailED} onChange={(e) => setEmailED(e.target.value)} />
-          <select name="select" value={(estadoED)} onChange={(e) => setEstadoED(e.target.value)}>
-            <option>{estadoED}</option>
-            {estadoED == 'Habilitado' ? <>
-              <option>Deshabilitado</option>
-            </> : <option>Habilitado</option>}
-          </select>
-          <select name="select" value={(rolED)} onChange={(e) => setRolED(e.target.value)}>
-          <option>{rolED}</option>
-            {estadoED == 'usuario' ? <>
-              <option>Usuario</option>
-            </> : <option>Admin</option>}
-          </select>
-          <button className='btn-editar' onClick={handleEditar}>GUARDAR</button>
-        </form>
-      </Modal>
+      {
+        showEditUser ?
+
+          <ModalEditarUsuario
+            show={showEditUsuario}
+            handleClose={closeEditUsuario}
+            id={usuarioSelected._id}
+            name={usuarioSelected.name}
+            email={usuarioSelected.email}
+            estado={usuarioSelected.estado}
+            rol={usuarioSelected.rol}
+          /> : <></>
+
+      }
+      {
+        showAddUsuario ?
+          <ModalAgregarUsuario
+            show={handleShowAddUser}
+            handleClose={handleCloseAddUser}
+          /> : <></>
+      }
+
+      {
+      showEditProd ?
+          <ModalEditarProducto
+            show={showEditProd}
+            handleClose={closeEditProd}
+            id={prodSelected._id}
+            nombre={prodSelected.nombre}
+            estado={prodSelected.estado}
+            precio={prodSelected.precio}
+            detalle={prodSelected.detalle}
+            imagen={prodSelected.imagen}
+            categoria={prodSelected.categoria}
+          /> : <></>
+
+      }
+
 
 
       <div className='admin-container'>
@@ -176,18 +221,19 @@ export const AdminScreen = () => {
                   <th>ESTADO</th>
                   <th>ELIMINAR</th>
                   <th>EDITAR</th>
+                  <th onClick={handleShowAddUser}>Agregar</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                  usuarios.map(usuario => (
+                  usuarios.map((usuario) => (
                     <tr key={usuario._id}>
                       <td>{usuario.name}</td>
                       <td>{usuario.email}</td>
                       <td>{usuario.rol}</td>
                       <td>{usuario.estado}</td>
-                      <td>❌</td>
-                      <td onClick={() => openModalEditarUsuario(usuario)}>📝</td>
+                      <td onClick={() => handleEliminarUsuario(usuario._id)}>❌</td>
+                      <td onClick={() => showEditUsuario(usuario)} >📝</td>
                     </tr>
                   ))
                 }
@@ -211,37 +257,21 @@ export const AdminScreen = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Chicken burger</td>
-                  <td><img src={chickenBurger} alt="" className='img-prod' /></td>
-                  <td>$1500</td>
-                  <td>DISPONIBLE</td>
-                  <td>HAMBURGUESAS</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, dolorem.</td>
-                  <td>❌</td>
-                  <td>📝</td>
-                </tr>
-                <tr>
-                  <td>Chicken burger</td>
-                  <td><img src={chickenBurger} alt="" className='img-prod' /></td>
-                  <td>$1500</td>
-                  <td>DISPONIBLE</td>
-                  <td>HAMBURGUESAS</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, dolorem.</td>
-                  <td>❌</td>
-                  <td>📝</td>
-                </tr>
-                <tr>
-                  <td>Chicken burger</td>
-                  <td><img src={chickenBurger} alt="" className='img-prod' /></td>
-                  <td>$1500</td>
-                  <td>DISPONIBLE</td>
-                  <td>HAMBURGUESAS</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, dolorem.</td>
-                  <td>❌</td>
-                  <td>📝</td>
-                </tr>
 
+                {
+                  productos.map((prod) => (
+                    <tr key={prod._id}>
+                      <td>{prod.nombre}</td>
+                      <td><img src={prod.imagen} alt={prod.nombre} className='img-prod' /></td>
+                      <td>{prod.precio}</td>
+                      <td>{prod.estado}</td>
+                      <td>{prod.categoria}</td>
+                      <td>{prod.detalle}</td>
+                      <td onClick={() => handleEliminarProducto(prod._id)}>❌</td>
+                      <td onClick={() => showEditProducto(prod)}>📝</td>
+                    </tr>
+                  ))
+                }
               </tbody>
             </table>
           </> : ''

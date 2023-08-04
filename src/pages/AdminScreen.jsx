@@ -1,11 +1,12 @@
 import '../css/adminScreen.css';
-import chickenBurger from '../assets/product_01.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseUser, faCartShopping, faUser, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import api from '../api/api';
 import { ModalEditarUsuario } from '../componentes/ModalEditarUsuario';
 import { ModalAgregarUsuario } from '../componentes/ModalAgregarUsuario';
+import { ModalEditarProducto } from '../componentes/ModalEditarProducto';
+
 import swal from 'sweetalert';
 
 export const AdminScreen = () => {
@@ -45,6 +46,45 @@ export const AdminScreen = () => {
       console.log(error)
     }
   }
+
+  // ELIMINAR USUARIO
+  const handleEliminarUsuario = (id) => {
+    swal({
+      title: 'Seguro desea eliminar?',
+      icon: "warning",
+      buttons: ["NO", "SI"]
+    }).then(resp => {
+      if (resp) {
+        eliminarUsuario(id);
+        swal({
+          text: "Usuario eliminado.",
+          icon: "success",
+          timer: "1500"
+        })
+
+      }
+    })
+  }
+
+  // ELIMINAR PRODUCTO
+  const handleEliminarProducto = (id) => {
+    swal({
+      title: 'Seguro desea eliminar?',
+      icon: "warning",
+      buttons: ["NO", "SI"]
+    }).then(resp => {
+      if (resp) {
+        eliminarProducto(id);
+        swal({
+          text: "Producto eliminado.",
+          icon: "success",
+          timer: "1500"
+        })
+
+      }
+    })
+  }
+
   const [usuarios, setUsuarios] = useState([]);
   const [productos, setProductos] = useState([]);
 
@@ -104,43 +144,18 @@ export const AdminScreen = () => {
   const handleCloseAddUser = () => setShowAddUsuario(false);
   const handleShowAddUser = () => setShowAddUsuario(true);
 
-  // ELIMINAR USUARIO
-  const handleEliminarUsuario = (id) => {
-    swal({
-      title: 'Seguro desea eliminar?',
-      icon: "warning",
-      buttons: ["NO", "SI"]
-    }).then(resp => {
-      if (resp) {
-        eliminarUsuario(id);
-        swal({
-          text: "Usuario eliminado.",
-          icon: "success",
-          timer: "1500"
-        })
+  // ESTADOS Y FUNCTION PARA MODAL EDITAR PRODUCTO
+  const [showEditProd, setShowEditProd] = useState(false);
+  const [prodSelected, setProdSelected] = useState([]);
 
-      }
-    })
-  }
-
-  // ELIMINAR PRODUCTO
-  const handleEliminarProducto = (id) => {
-    swal({
-      title: 'Seguro desea eliminar?',
-      icon: "warning",
-      buttons: ["NO", "SI"]
-    }).then(resp => {
-      if (resp) {
-        eliminarProducto(id);
-        swal({
-          text: "Producto eliminado.",
-          icon: "success",
-          timer: "1500"
-        })
-
-      }
-    })
-  }
+  const closeEditProd = () => {
+    setShowEditProd(false);
+    obtenerProductos();
+  };
+  const showEditProducto = (producto) => {
+    setProdSelected(producto);
+    setShowEditProd(true);
+  };
 
 
   return (
@@ -166,6 +181,22 @@ export const AdminScreen = () => {
             show={handleShowAddUser}
             handleClose={handleCloseAddUser}
           /> : <></>
+      }
+
+      {
+      showEditProd ?
+          <ModalEditarProducto
+            show={showEditProd}
+            handleClose={closeEditProd}
+            id={prodSelected._id}
+            nombre={prodSelected.nombre}
+            estado={prodSelected.estado}
+            precio={prodSelected.precio}
+            detalle={prodSelected.detalle}
+            imagen={prodSelected.imagen}
+            categoria={prodSelected.categoria}
+          /> : <></>
+
       }
 
 
@@ -237,7 +268,7 @@ export const AdminScreen = () => {
                       <td>{prod.categoria}</td>
                       <td>{prod.detalle}</td>
                       <td onClick={() => handleEliminarProducto(prod._id)}>❌</td>
-                      <td>📝</td>
+                      <td onClick={() => showEditProducto(prod)}>📝</td>
                     </tr>
                   ))
                 }

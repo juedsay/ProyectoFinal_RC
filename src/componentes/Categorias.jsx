@@ -73,7 +73,9 @@ export const Categorias = () => {
                                         id={prod._id} 
                                         img={prod.imagen} 
                                         nombre={prod.nombre} 
-                                        precio={prod.precio} />                                  
+                                        precio={prod.precio}
+                                        detalle={prod.detalle}
+                                        />                                  
                                 })
                             }
 
@@ -91,7 +93,8 @@ export const Categorias = () => {
                                         id={prod._id} 
                                         img={prod.imagen} 
                                         nombre={prod.nombre} 
-                                        precio={prod.precio} />
+                                        precio={prod.precio}
+                                        detalle={prod.detalle} />
                                     }
                                 })
                             }
@@ -109,6 +112,7 @@ export const Categorias = () => {
                                         img={prod.imagen} 
                                         nombre={prod.nombre} 
                                         precio={prod.precio}
+                                        detalle={prod.detalle}
                                          />
                                     }
                                 })

@@ -14,16 +14,19 @@ export const Categorias = () => {
         setHamburger(true);
         setPizza(false);
         setAll(false);
+        setPapas(false);
     }
     const handleAll = () => {
         setAll(true);
         setHamburger(false);
         setPizza(false);
+        setPapas(false);
     }
     const handelPizza = () => {
         setPizza(true);
         setHamburger(false);
         setAll(false);
+        setPapas(false);
     }
     const handlePapas = () => {
         setPapas(true);

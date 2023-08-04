@@ -37,6 +37,14 @@ export const AdminScreen = () => {
     }
   }
 
+  const eliminarProducto = async (id) => {
+    try {
+      await api.delete(`/admin/producto/${id}`);
+      obtenerProductos();
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const [usuarios, setUsuarios] = useState([]);
   const [productos, setProductos] = useState([]);
 
@@ -106,7 +114,26 @@ export const AdminScreen = () => {
       if (resp) {
         eliminarUsuario(id);
         swal({
-          text: "Usuario eliminado",
+          text: "Usuario eliminado.",
+          icon: "success",
+          timer: "1500"
+        })
+
+      }
+    })
+  }
+
+  // ELIMINAR PRODUCTO
+  const handleEliminarProducto = (id) => {
+    swal({
+      title: 'Seguro desea eliminar?',
+      icon: "warning",
+      buttons: ["NO", "SI"]
+    }).then(resp => {
+      if (resp) {
+        eliminarProducto(id);
+        swal({
+          text: "Producto eliminado.",
           icon: "success",
           timer: "1500"
         })
@@ -209,7 +236,7 @@ export const AdminScreen = () => {
                       <td>{prod.estado}</td>
                       <td>{prod.categoria}</td>
                       <td>{prod.detalle}</td>
-                      <td>❌</td>
+                      <td onClick={() => handleEliminarProducto(prod._id)}>❌</td>
                       <td>📝</td>
                     </tr>
                   ))

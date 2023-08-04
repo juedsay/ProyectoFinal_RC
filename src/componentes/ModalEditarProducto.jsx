@@ -22,8 +22,8 @@ export const ModalEditarProducto = ({ show, handleClose, id, nombre, estado, pre
 				estado,
 				precio,
 				detalle,
-                imagen,
-                categoria
+        imagen,
+        categoria
 			});
             console.log(resp.data.msg);
 			swal({
@@ -48,7 +48,7 @@ export const ModalEditarProducto = ({ show, handleClose, id, nombre, estado, pre
         timer: 1500
       });
     }else{
-      editarProducto(id, nombrE, estadO, precio, detallE, imageN, categoriA);
+      editarProducto(id, nombrE, estadO, preciO, detallE, imageN, categoriA);
     }
   }
 
@@ -60,8 +60,8 @@ export const ModalEditarProducto = ({ show, handleClose, id, nombre, estado, pre
         </Modal.Header>
         <form className='form-editar' onSubmit={handleEditar}>
           <input type="text" placeholder='Nombre' value={nombrE} onChange={(e) => setNombre(e.target.value)} minLength={6}/>
-          <input type="number" placeholder='Precio' value={preciO} onChange={(e) => setPrecio(e.target.value)} min={1} max={9999}/>
-          <input type="text" placeholder='Detalle' value={detallE} onChange={(e) => setDetalle(e.target.value)} maxLength={30}/>
+          <input type="number" placeholder='Precio' value={preciO} onChange={(e) => setPrecio(e.target.value)} max={9999}/>
+          <input type="text" placeholder='Detalle' value={detallE} onChange={(e) => setDetalle(e.target.value)} maxLength={200}/>
           <input type="text" placeholder='IMG URL' value={imageN} onChange={(e) => setImagen(e.target.value)} />
           <select name="select" value={estadO} onChange={(e) => setEstado(e.target.value)}>
             <option>{estadO}</option>

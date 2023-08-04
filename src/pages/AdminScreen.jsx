@@ -5,8 +5,8 @@ import { faHouseUser, faCartShopping, faUser, faPenToSquare } from '@fortawesome
 import { useEffect, useState } from 'react';
 import api from '../api/api';
 import { ModalEditarUsuario } from '../componentes/ModalEditarUsuario';
-import swal from 'sweetalert';
 import { ModalAgregarUsuario } from '../componentes/ModalAgregarUsuario';
+import swal from 'sweetalert';
 
 export const AdminScreen = () => {
 
@@ -21,13 +21,24 @@ export const AdminScreen = () => {
 
   const eliminarUsuario = async (id) => {
     try {
-     await api.delete(`/admin/usuario/${id}`);
+      await api.delete(`/admin/usuario/${id}`);
+      obtenerUsuarios();
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const obtenerProductos = async () => {
+    try {
+      const resp = await api.get('/admin/productos');
+      setProductos(resp.data.productos);
     } catch (error) {
       console.log(error)
     }
   }
 
   const [usuarios, setUsuarios] = useState([]);
+  const [productos, setProductos] = useState([]);
 
   // MANEJO DE SWITCHER DE CATEGORIAS ↓ ↓ ↓
   const [showUsers, setShowUsers] = useState(true);
@@ -63,14 +74,16 @@ export const AdminScreen = () => {
 
   useEffect(() => {
     obtenerUsuarios();
-  });
+    obtenerProductos();
+  }, []);
 
   // ESTADOS Y FUNCTION PARA MODAL EDITAR USUARIO
   const [showEditUser, setShowEditarUsuario] = useState(false);
   const [usuarioSelected, setUsuarioSelected] = useState([]);
 
-  const closeEditUsuario = () =>{
-    setShowEditarUsuario(false)
+  const closeEditUsuario = () => {
+    setShowEditarUsuario(false);
+    obtenerUsuarios();
   };
   const showEditUsuario = (usuario) => {
     setUsuarioSelected(usuario);
@@ -88,44 +101,46 @@ export const AdminScreen = () => {
     swal({
       title: 'Seguro desea eliminar?',
       icon: "warning",
-      buttons: ["NO","SI"]
-    }).then(resp=>{
-      if(resp){
+      buttons: ["NO", "SI"]
+    }).then(resp => {
+      if (resp) {
         eliminarUsuario(id);
         swal({
           text: "Usuario eliminado",
           icon: "success",
           timer: "1500"
         })
+
       }
     })
   }
+
 
   return (
     <>
 
       {
-        showEditUser ? 
-      
-      <ModalEditarUsuario 
-      show={showEditUsuario} 
-      handleClose={closeEditUsuario}
-      id={usuarioSelected._id}
-      name={usuarioSelected.name}
-      email={usuarioSelected.email}
-      estado={usuarioSelected.estado}
-      rol={usuarioSelected.rol}
-      /> : <></>
+        showEditUser ?
+
+          <ModalEditarUsuario
+            show={showEditUsuario}
+            handleClose={closeEditUsuario}
+            id={usuarioSelected._id}
+            name={usuarioSelected.name}
+            email={usuarioSelected.email}
+            estado={usuarioSelected.estado}
+            rol={usuarioSelected.rol}
+          /> : <></>
 
       }
       {
-        showAddUsuario ? 
-        <ModalAgregarUsuario 
-        show={handleShowAddUser}
-        handleClose={handleCloseAddUser}
-        /> : <></>
+        showAddUsuario ?
+          <ModalAgregarUsuario
+            show={handleShowAddUser}
+            handleClose={handleCloseAddUser}
+          /> : <></>
       }
-  
+
 
 
       <div className='admin-container'>
@@ -184,37 +199,21 @@ export const AdminScreen = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Chicken burger</td>
-                  <td><img src={chickenBurger} alt="" className='img-prod' /></td>
-                  <td>$1500</td>
-                  <td>DISPONIBLE</td>
-                  <td>HAMBURGUESAS</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, dolorem.</td>
-                  <td>❌</td>
-                  <td>📝</td>
-                </tr>
-                <tr>
-                  <td>Chicken burger</td>
-                  <td><img src={chickenBurger} alt="" className='img-prod' /></td>
-                  <td>$1500</td>
-                  <td>DISPONIBLE</td>
-                  <td>HAMBURGUESAS</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, dolorem.</td>
-                  <td>❌</td>
-                  <td>📝</td>
-                </tr>
-                <tr>
-                  <td>Chicken burger</td>
-                  <td><img src={chickenBurger} alt="" className='img-prod' /></td>
-                  <td>$1500</td>
-                  <td>DISPONIBLE</td>
-                  <td>HAMBURGUESAS</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, dolorem.</td>
-                  <td>❌</td>
-                  <td>📝</td>
-                </tr>
 
+                {
+                  productos.map((prod) => (
+                    <tr key={prod._id}>
+                      <td>{prod.nombre}</td>
+                      <td><img src={prod.imagen} alt={prod.nombre} className='img-prod' /></td>
+                      <td>{prod.precio}</td>
+                      <td>{prod.estado}</td>
+                      <td>{prod.categoria}</td>
+                      <td>{prod.detalle}</td>
+                      <td>❌</td>
+                      <td>📝</td>
+                    </tr>
+                  ))
+                }
               </tbody>
             </table>
           </> : ''

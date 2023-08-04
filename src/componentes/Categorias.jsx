@@ -68,7 +68,12 @@ export const Categorias = () => {
 
 {
                                 productos.map((prod) => {                             
-                                        return <ProductCard key={prod._id} img={prod.imagen} nombre={prod.nombre} precio={prod.precio} />                                  
+                                        return <ProductCard 
+                                        key={prod._id} 
+                                        id={prod._id} 
+                                        img={prod.imagen} 
+                                        nombre={prod.nombre} 
+                                        precio={prod.precio} />                                  
                                 })
                             }
 
@@ -81,7 +86,12 @@ export const Categorias = () => {
                             {
                                 productos.map((prod) => {
                                     if (prod.categoria == 'Pizza') {
-                                        return <ProductCard key={prod._id} img={prod.imagen} nombre={prod.nombre} precio={prod.precio} />
+                                        return <ProductCard 
+                                        key={prod._id} 
+                                        id={prod._id} 
+                                        img={prod.imagen} 
+                                        nombre={prod.nombre} 
+                                        precio={prod.precio} />
                                     }
                                 })
                             }
@@ -93,7 +103,13 @@ export const Categorias = () => {
                             {
                                 productos.map((prod) => {
                                     if (prod.categoria == 'Hambur') {
-                                        return <ProductCard key={prod._id} img={prod.imagen} nombre={prod.nombre} precio={prod.precio} />
+                                        return <ProductCard 
+                                        key={prod._id}
+                                        id={prod._id}
+                                        img={prod.imagen} 
+                                        nombre={prod.nombre} 
+                                        precio={prod.precio}
+                                         />
                                     }
                                 })
                             }
@@ -103,7 +119,12 @@ export const Categorias = () => {
                             {
                                 productos.map((prod) => {
                                     if (prod.categoria == 'Papas') {
-                                        return <ProductCard key={prod._id} img={prod.imagen} nombre={prod.nombre} precio={prod.precio} />
+                                        return <ProductCard 
+                                        key={prod._id} 
+                                        id={prod._id} 
+                                        img={prod.imagen} 
+                                        nombre={prod.nombre} 
+                                        precio={prod.precio} />
                                     }
                                 })
                             }

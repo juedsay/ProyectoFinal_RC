@@ -6,6 +6,7 @@ import api from '../api/api';
 import { ModalEditarUsuario } from '../componentes/ModalEditarUsuario';
 import { ModalAgregarUsuario } from '../componentes/ModalAgregarUsuario';
 import { ModalEditarProducto } from '../componentes/ModalEditarProducto';
+import { ModalAgregarProducto } from '../componentes/ModalAgregarProducto';
 
 import swal from 'sweetalert';
 
@@ -141,8 +142,20 @@ export const AdminScreen = () => {
   // ESTADOS y FUNCIONES PARA MODAL AGREGAR USUARIO
   const [showAddUsuario, setShowAddUsuario] = useState(false);
 
-  const handleCloseAddUser = () => setShowAddUsuario(false);
+  const handleCloseAddUser = () => {
+    setShowAddUsuario(false);
+    obtenerUsuarios();
+  }
   const handleShowAddUser = () => setShowAddUsuario(true);
+  
+  // ESTADOS y FUNCIONES PARA MODAL AGREGAR PRODUCTO
+  const [showAddProducto, setShowAddProducto] = useState(false);
+
+  const handleCloseAddProducto = () => {
+    setShowAddProducto(false);
+    obtenerProductos();
+  }
+  const handleShowAddProducto = () => setShowAddProducto(true);
 
   // ESTADOS Y FUNCTION PARA MODAL EDITAR PRODUCTO
   const [showEditProd, setShowEditProd] = useState(false);
@@ -160,7 +173,7 @@ export const AdminScreen = () => {
 
   return (
     <>
-
+      {/***** MODALES *****/}
       {
         showEditUser ?
 
@@ -180,6 +193,14 @@ export const AdminScreen = () => {
           <ModalAgregarUsuario
             show={handleShowAddUser}
             handleClose={handleCloseAddUser}
+          /> : <></>
+      }
+
+      {
+        showAddProducto ?
+          <ModalAgregarProducto
+            show={handleShowAddProducto}
+            handleClose={handleCloseAddProducto}
           /> : <></>
       }
 
@@ -254,6 +275,7 @@ export const AdminScreen = () => {
                   <th>DETALLE</th>
                   <th>ELIMINAR</th>
                   <th>EDITAR</th>
+                  <th onClick={handleShowAddProducto}>Agregar</th>
                 </tr>
               </thead>
               <tbody>

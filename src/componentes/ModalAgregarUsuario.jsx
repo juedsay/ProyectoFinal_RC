@@ -39,8 +39,15 @@ export const ModalAgregarUsuario = ({show, handleClose}) => {
                     button: false,
                     timer: 1500
                   });
+                  setTimeout(() => {
+                    handleClose()
+                }, "1500");
             } catch (error) {
-                console.log(error)
+              swal({
+                text: error.response.data.msg,
+                button: false,
+                timer: 1500
+              });
             }
             
         }
@@ -52,7 +59,7 @@ export const ModalAgregarUsuario = ({show, handleClose}) => {
           <Modal.Title>Agregar usuario</Modal.Title>
         </Modal.Header>
         <form className='form-editar' onSubmit={handleAgregar}>
-          <input type="text" placeholder='Nombre' value={name} onChange={(e) => setName(e.target.value)} maxLength={20}/>
+          <input type="text" placeholder='Nombre' value={name} onChange={(e) => setName(e.target.value)} minLength={5} maxLength={20}/>
           <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
           <input type="password" placeholder='Contraseña' value={password} onChange={(e) => setPassword(e.target.value)} minLength={6}/>
           <input type="password" placeholder='Repita contraseña' value={repassword} onChange={(e) => setRepassword(e.target.value)} minLength={6}/>

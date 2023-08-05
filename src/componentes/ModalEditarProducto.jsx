@@ -25,14 +25,15 @@ export const ModalEditarProducto = ({ show, handleClose, id, nombre, estado, pre
         imagen,
         categoria
 			});
-            console.log(resp.data.msg);
 			swal({
         icon: 'success',
-        text: 'Producto actualizado!',
+        text: resp.data.msg,
         button: false,
-        timer: 1000
+        timer: 1500
       });
-
+      setTimeout(() => {
+        handleClose()
+    }, "1500");
 		} catch (error) {
 			console.log(error);
 		}

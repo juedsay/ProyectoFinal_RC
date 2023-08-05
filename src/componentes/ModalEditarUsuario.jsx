@@ -23,13 +23,11 @@ export const ModalEditarUsuario = ({ show, handleClose, id, name, email, estado,
 			});
 			swal({
         icon: 'success',
-        text: resp.data.msg,
+        text: 'Producto actualizado!',
         button: false,
-        timer: 1500
+        timer: 1000
       });
-      setTimeout(() => {
-        handleClose()
-      }, "1500");
+
 		} catch (error) {
 			console.log(error);
 		}

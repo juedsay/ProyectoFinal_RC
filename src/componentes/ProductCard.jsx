@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import '../css/productCard.css';
 
+// eslint-disable-next-line react/prop-types
 export const ProductCard = ({ id, img, nombre, precio }) => {
     return (
         <>

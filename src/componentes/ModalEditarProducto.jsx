@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { useState } from 'react';
 
 
+// eslint-disable-next-line react/prop-types
 export const ModalEditarProducto = ({ show, handleClose, id, nombre, estado, precio, detalle, imagen, categoria}) => {
 
   const [nombrE, setNombre] = useState(nombre);

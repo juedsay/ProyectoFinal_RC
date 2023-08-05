@@ -1,6 +1,7 @@
+import { NavLink } from 'react-router-dom';
 import '../css/productCard.css';
 
-export const ProductCard = ({ img, nombre, precio }) => {
+export const ProductCard = ({ id, img, nombre, precio }) => {
     return (
         <>
             <div className="card">
@@ -8,7 +9,7 @@ export const ProductCard = ({ img, nombre, precio }) => {
                 <span>{nombre}</span>
                 <div className='price-btn'>
                     <span>{precio}</span>
-                    <button>Añadir al carrito</button>
+                    <button><NavLink to={`/product/${id}`}>Añadir al carrito</NavLink></button>
                 </div>
             </div>
         </>

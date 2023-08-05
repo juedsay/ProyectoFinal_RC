@@ -50,12 +50,13 @@ export const LoginScreen = () => {
           title: resp.data.msg,
           showConfirmButton: false,
           timer: 1500
-        })
+        });
         setTimeout(() => {
           if(user.rol == 'usuario'){
             navigate('/');
+          }else{
+            navigate('/admin');
           }
-          navigate('/admin');
         }, 1500);
         
       } catch (error) {

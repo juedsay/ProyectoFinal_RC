@@ -5,7 +5,6 @@ import swal from 'sweetalert';
 import { useState } from 'react';
 
 
-// eslint-disable-next-line react/prop-types
 export const ModalEditarProducto = ({ show, handleClose, id, nombre, estado, precio, detalle, imagen, categoria}) => {
 
   const [nombrE, setNombre] = useState(nombre);
@@ -26,15 +25,14 @@ export const ModalEditarProducto = ({ show, handleClose, id, nombre, estado, pre
         imagen,
         categoria
 			});
+            console.log(resp.data.msg);
 			swal({
         icon: 'success',
-        text: resp.data.msg,
+        text: 'Producto actualizado!',
         button: false,
-        timer: 1500
+        timer: 1000
       });
-      setTimeout(() => {
-        handleClose()
-    }, "1500");
+
 		} catch (error) {
 			console.log(error);
 		}

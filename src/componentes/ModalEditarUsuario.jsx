@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { useState } from 'react';
 
 
+// eslint-disable-next-line react/prop-types
 export const ModalEditarUsuario = ({ show, handleClose, id, name, email, estado, rol}) => {
 
   const [namE, setName] = useState(name);

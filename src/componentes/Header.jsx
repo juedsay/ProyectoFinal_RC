@@ -21,8 +21,8 @@ export const Header = () => {
             <Nav.Link href="#pricing">Pedidos</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets"><FontAwesomeIcon icon={faShoppingCart} /><Badge bg="secondary">2</Badge></Nav.Link>
-            <Nav.Link href="#deets"><FontAwesomeIcon icon={faUser} /></Nav.Link> 
+            <Nav.Link href="#deets">Carrito<FontAwesomeIcon icon={faShoppingCart} /><Badge bg="secondary">2</Badge></Nav.Link>
+            <Nav.Link href="#deets">Cuenta<FontAwesomeIcon icon={faUser} /></Nav.Link> 
           </Nav>
         </Navbar.Collapse>
       </Container>

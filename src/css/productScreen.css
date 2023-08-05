@@ -1,0 +1,19 @@
+.container-product{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.info-product{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+.info-product span{
+    margin-bottom: 10px;
+}
+
+.info-product button{
+    width: 100px;
+}

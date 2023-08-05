@@ -4,6 +4,11 @@
     flex-wrap: wrap;
 }
 
+a{
+    text-decoration: none !important;
+    color: black !important;
+}
+
 .card{
     width: 22%;
     border: 1px solid #ccc;

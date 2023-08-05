@@ -1,11 +1,13 @@
+import { NavLink } from 'react-router-dom';
 import '../css/productCard.css';
 
-export const ProductCard = ({ img, nombre, precio }) => {
+// eslint-disable-next-line react/prop-types
+export const ProductCard = ({ id, img, nombre, precio }) => {
     return (
         <>
             <div className="card">
                 <img src={img} alt="" />
-                <span>{nombre}</span>
+                <span><NavLink to={`/product/${id}`}>{nombre}</NavLink></span>
                 <div className='price-btn'>
                     <span>{precio}</span>
                     <button>Añadir al carrito</button>

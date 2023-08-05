@@ -4,6 +4,7 @@ import api from '../api/api';
 import swal from 'sweetalert';
 import { useState } from 'react';
 
+// eslint-disable-next-line react/prop-types
 export const ModalAgregarUsuario = ({show, handleClose}) => {
 
     const [name, setName] = useState('');

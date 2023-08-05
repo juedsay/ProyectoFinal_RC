@@ -1,34 +1,28 @@
-import React from 'react';
-import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+/* eslint-disable no-unused-vars */
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Badge from 'react-bootstrap/Badge';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faU, faUser } from '@fortawesome/free-solid-svg-icons';
+
 
 export const Header = () => {
   return (
     <>
-    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">
-          <img
-            src="/src/assets/4741565.jpg"
-            alt="Logo"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbar-nav" />
-        <Navbar.Collapse id="navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#meals">Comidas</Nav.Link>
-            <Nav.Link href="#contact">Contacto</Nav.Link>
+        <Navbar.Brand href="#home">Delivery Fast</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#features">Comidas</Nav.Link>
+            <Nav.Link href="#pricing">Contacto</Nav.Link>
+            <Nav.Link href="#pricing">Pedidos</Nav.Link>
           </Nav>
           <Nav>
-            <Button variant="link" className="text-light">
-              <i className="fas fa-shopping-cart"></i>
-              <Badge pill variant="danger" className="ml-1">3</Badge>
-            </Button>
-            <Button variant="outline-light" className="mr-2">Login</Button>
+            <Nav.Link href="#deets"><FontAwesomeIcon icon={faShoppingCart} /><Badge bg="secondary">2</Badge></Nav.Link>
+            <Nav.Link href="#deets"><FontAwesomeIcon icon={faUser} /></Nav.Link> 
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -10,7 +10,10 @@ import { Footer } from '../componentes/Footer';
 
 
 export const HomeScreen = () => {
-
+  if(JSON.parse(localStorage.getItem('carrito')) == null){
+    const carrito = [];
+    localStorage.setItem('carrito',JSON.stringify(carrito))
+  }
   // const navigate = useNavigate();
   const [username, setUsername] = useState('');
 

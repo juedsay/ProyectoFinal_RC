@@ -7,6 +7,7 @@ import { ModalEditarUsuario } from '../componentes/ModalEditarUsuario';
 import { ModalAgregarUsuario } from '../componentes/ModalAgregarUsuario';
 import { ModalEditarProducto } from '../componentes/ModalEditarProducto';
 import { ModalAgregarProducto } from '../componentes/ModalAgregarProducto';
+import Header from '../componentes/Header';
 
 import swal from 'sweetalert';
 
@@ -221,7 +222,7 @@ export const AdminScreen = () => {
       }
 
 
-
+      <Header />
       <div className='admin-container'>
         <div className='secciones'>
           <ul>

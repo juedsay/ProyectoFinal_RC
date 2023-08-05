@@ -5,14 +5,30 @@ import Navbar from 'react-bootstrap/Navbar';
 import Badge from 'react-bootstrap/Badge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faU, faUser } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import OffcanvasCart from '../componentes/OffcanvasCart';
+
 
 
 export const Header = () => {
+  const [showOffCanvas, setShowOffCanvas] = useState(false);
+
+  const handleClose = () => setShowOffCanvas(false);
+  const handleShow = () => setShowOffCanvas(true);
+
   return (
     <>
+
+  <OffcanvasCart 
+  show={showOffCanvas} 
+  handleShow={handleShow} 
+  handleClose={handleClose}
+  placement={'end'} />
+
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Delivery Fast</Navbar.Brand>
+        <Navbar.Brand><NavLink to={'/'}>Delivery Fast</NavLink></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -21,8 +37,8 @@ export const Header = () => {
             <Nav.Link href="#pricing">Pedidos</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">Carrito<FontAwesomeIcon icon={faShoppingCart} /><Badge bg="secondary">2</Badge></Nav.Link>
-            <Nav.Link href="#deets">Cuenta<FontAwesomeIcon icon={faUser} /></Nav.Link> 
+            <Nav.Link><FontAwesomeIcon icon={faShoppingCart} onClick={handleShow}/><Badge bg="secondary">2</Badge></Nav.Link>
+            <Nav.Link>Cuenta<FontAwesomeIcon icon={faUser} /></Nav.Link> 
           </Nav>
         </Navbar.Collapse>
       </Container>

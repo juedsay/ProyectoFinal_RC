@@ -39,9 +39,7 @@ export const LoginScreen = () => {
         localStorage.setItem('token',resp.data.token);
 
         const user = {
-          id: resp.data.id,
-          name: resp.data.name,
-          rol: resp.data.rol
+          id: resp.data.id
         };
 
         localStorage.setItem('user',JSON.stringify(user));

@@ -6,10 +6,10 @@ export const ProductCard = ({ id, img, nombre, precio }) => {
         <>
             <div className="card">
                 <img src={img} alt="" />
-                <span>{nombre}</span>
+                <span><NavLink to={`/product/${id}`}>{nombre}</NavLink></span>
                 <div className='price-btn'>
                     <span>{precio}</span>
-                    <button><NavLink to={`/product/${id}`}>Añadir al carrito</NavLink></button>
+                    <button>Añadir al carrito</button>
                 </div>
             </div>
         </>

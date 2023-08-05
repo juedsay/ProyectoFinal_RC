@@ -85,7 +85,7 @@ export const LoginScreen = () => {
         <form onSubmit={handleLogin} className='form-login'>
           <div className="form-group">
             <input className={msgErrorEmail ? 'input-login input-login-error' : 'input-login'} type="email" placeholder="Email"
-              value={email} onChange={(e) => setEmail(e.target.value)} />
+              value={email} onChange={(e) => setEmail(e.target.value)}/>
             {msgErrorEmail ? <>
               <span className='msg-error'>Ingrese email</span>
             </> : ''}

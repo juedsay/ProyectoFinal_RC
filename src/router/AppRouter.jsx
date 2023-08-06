@@ -4,7 +4,7 @@ import { LoginScreen } from "../pages/LoginScreen";
 import { RegisterScreen } from "../pages/RegisterScreen";
 import { AdminScreen } from "../pages/AdminScreen";
 import {CartaScreen} from "../pages/CartaScreen"
-import {CartaScreen} from "../pages/ComidaScreen"
+import {ComidaScreen} from "../pages/ComidaScreen"
 
 export const AppRouter = () => {
   return (

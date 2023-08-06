@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Tabla } from '../componentes/Tabla';
 import { SeccionComun } from '../componentes/SeccionComun';
-// import api from '../api/api';
+import api from '../api/api';
 import { useNavigate } from 'react-router';
 
 export const CartaScreen = () => {

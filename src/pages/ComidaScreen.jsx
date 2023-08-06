@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-
-// import api from '../api/api';
+import { SeccionComun } from '../componentes/SeccionComun';
+import { Comidas } from '../componentes/Comidas';
+import api from '../api/api';
 import { useNavigate } from 'react-router';
 
 export const ComidaScreen = () => {
@@ -34,8 +35,8 @@ export const ComidaScreen = () => {
        {
          username !== '' ? <h1>Bienvenido {username}</h1> : ''
        }
-         
-         
+         <SeccionComun />
+         <Comidas />
        </>
      )
    }

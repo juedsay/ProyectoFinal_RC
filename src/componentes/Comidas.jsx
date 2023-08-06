@@ -29,14 +29,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/product_01.jpg" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
                                 <a href="/foods/01">Hamburguesa de Pollo</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$100" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -45,14 +45,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/product_2.1.jpg" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Pizza Vegetariana</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$114" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -61,14 +61,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/product_3.1.jpg" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Pizza Margarita con doble queso</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$154" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -77,14 +77,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/product_4.1.jpg" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Pizza a la onda Mexicana</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$185" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -93,14 +93,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/product_04.jpg" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Hamburguesa con queso cheddar</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$200" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -109,14 +109,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/product_09.jpg" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Hamburguesa de Royal con queso cheddar</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$280" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -125,14 +125,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/product_2.2.jpg" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Pizza de mariscos</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$240" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -141,14 +141,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/product_3.2.jpg" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Pizza estilo NY</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$220" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -157,14 +157,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/product_4.2.jpg" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Pizza con hongos</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$285" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -173,14 +173,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/product_08.jpg" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Hamburguesa Clasica</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$120" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -189,14 +189,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/bread(1).png" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Pan Casero</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$15" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -205,14 +205,14 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/bread(2).png" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Pan de Campo</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
-                                <span class="product__price">"$24" </span>
+                                <span class="product__price">"$30" </span>
                                 <button class="addTOCart__btn">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -221,11 +221,11 @@ export const Comidas = () => {
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">
-                            <img src="" alt="" class="w-50"/>
+                            <img src="/src/assets/bread(3).png" alt="" class="w-50"/>
                         </div>
                         <div class="product__content">
                             <h5>
-                                <a href="/foods/01">Hamburguesa de Pollo</a>
+                                <a href="/foods/01">Pan Flauta</a>
                             </h5>
                             <div class=" d-flex align-items-center justify-content-between ">
                                 <span class="product__price">"$24" </span>

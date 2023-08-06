@@ -4,6 +4,7 @@ import { LoginScreen } from "../pages/LoginScreen";
 import { RegisterScreen } from "../pages/RegisterScreen";
 import { AdminScreen } from "../pages/AdminScreen";
 import {CartaScreen} from "../pages/CartaScreen"
+import {CartaScreen} from "../pages/ComidaScreen"
 
 export const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ export const AppRouter = () => {
                 <Route path="/register" element={<RegisterScreen />}/>
                 <Route path="/admin" element={<AdminScreen />}/>
                 <Route path="/carta" element={<CartaScreen />}/>
+                <Route path="/comidas" element={<ComidaScreen />}/>
             </Routes>
         </BrowserRouter>
     </>

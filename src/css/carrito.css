@@ -1,0 +1,14 @@
+.product-carrito-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-carrito-container img{
+    width: 50px;
+}
+.product-carrito-container .info{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}

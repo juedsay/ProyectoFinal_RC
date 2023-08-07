@@ -16,7 +16,8 @@ export const ProductCard = ({ id, img, nombre, precio }) => {
         if(carritoLocalStorage == null){
             localStorage.setItem('carrito', JSON.stringify(producto));
         }else{
-            let productoExite = carritoLocalStorage.filter((prod) => prod.id == producto.id);
+            let productoExite = carritoLocalStorage.filter((prod) => prod.id_prod == producto.id_prod);
+            console.log(productoExite)
             if(productoExite.length !== 0){
                 carritoLocalStorage.forEach(prod => {
                     if(prod.id == producto.id){

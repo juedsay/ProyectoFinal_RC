@@ -4,7 +4,7 @@ import '../css/carrito.css';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { NavLink } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 
 export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
@@ -19,6 +19,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
       total += (prod.cantidad * prod.precio);
     })
     setCostoTotal(total);
+    localStorage.setItem('total',total);
   }
   const obtenerCarrito = () => {
     const carritoLS = JSON.parse(localStorage.getItem('carrito'));
@@ -68,42 +69,42 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           {
-            carrito.length !== 0 ? 
+            carrito.length !== 0 ?
 
-            carrito.map((prod) => {
-              return (
-                <>
-              <div className="product-carrito-container" key={prod.id_prod}>
-                <img src={prod.imagen} alt="" />
-                <div className="info">
-                  <span>
-                    {prod.nombre}
-                    asdasd
-                  </span>
-                  <span>
-                    <span 
-                    onClick={() => handleRestar(prod.id_prod)}
-                    className='boton-sr'>-</span>
-                    <span>{prod.cantidad}</span>
-                    <span 
-                    onClick={() => handleSumar(prod.id_prod)}
-                    className='boton-sr'>+</span>
-                  </span>
-                </div>
-                  <span>${prod.precio * prod.cantidad}</span>
-                </div>
+              carrito.map((prod) => {
+                return (
+                  <>
+                    <div className="product-carrito-container" key={prod.id_prod}>
+                      <img src={prod.imagen} alt="" />
+                      <div className="info">
+                        <span>
+                          {prod.nombre}
+                          asdasd
+                        </span>
+                        <span>
+                          <span
+                            onClick={() => handleRestar(prod.id_prod)}
+                            className='boton-sr'>-</span>
+                          <span>{prod.cantidad}</span>
+                          <span
+                            onClick={() => handleSumar(prod.id_prod)}
+                            className='boton-sr'>+</span>
+                        </span>
+                      </div>
+                      <span>${prod.precio * prod.cantidad}</span>
+                    </div>
                   </>
-              )
-            }) : <h1>Carrito vacio</h1>
+                )
+              }) : <h1>Carrito vacio</h1>
 
           }{
-            carrito.length !== 0 ? 
-            <>
-            <div className="total">
-              <span>TOTAL: {costoTotal}</span>
-              <NavLink to={'/pedido'}>HACER PEDIDO</NavLink>
-            </div>
-            </> : ''
+            carrito.length !== 0 ?
+              <>
+                <div className="total">
+                  <span>TOTAL: {costoTotal}</span>
+                  <NavLink to='/pedido'><button>HACER PEDIDO</button></NavLink>
+                </div>
+              </> : ''
           }
         </Offcanvas.Body>
       </Offcanvas>

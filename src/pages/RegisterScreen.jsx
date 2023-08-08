@@ -43,6 +43,7 @@ export const RegisterScreen = () => {
             email,
             password
           });
+          console.log(resp)
           Swal.fire({
             icon: 'success',
             title: resp.data.msg,
@@ -53,9 +54,10 @@ export const RegisterScreen = () => {
             navigate('/')
           }, 1500);
         } catch (error) {
+          console.log(error.data)
           Swal.fire({
             icon: 'error',
-            title: error.response.data.msg,
+            title: error.data.errors.name.msg,
             showConfirmButton: false,
             timer: 1500
           })

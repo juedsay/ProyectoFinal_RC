@@ -1,0 +1,22 @@
+.mi-pedido{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.pedido{
+    width: 50%;
+}
+.pedido-inner{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.pedido-inner img{
+    width: 100px;
+}
+.total-pedido{
+    width: 50%;
+}
+.form-pedido{
+    width: 100%;
+}

@@ -1,15 +1,17 @@
+/* eslint-disable no-unused-vars */
 import '../css/adminScreen.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseUser, faCartShopping, faUser, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import api from '../api/api';
 import { ModalEditarUsuario } from '../componentes/ModalEditarUsuario';
 import { ModalAgregarUsuario } from '../componentes/ModalAgregarUsuario';
 import { ModalEditarProducto } from '../componentes/ModalEditarProducto';
 import { ModalAgregarProducto } from '../componentes/ModalAgregarProducto';
 import Header from '../componentes/Header';
+import api from '../api/api';
 
 import swal from 'sweetalert';
+import { ModalEditarPedido } from '../componentes/ModalEditarPedido';
 
 export const AdminScreen = () => {
 
@@ -184,6 +186,20 @@ export const AdminScreen = () => {
     setShowEditProd(true);
   };
 
+  // ESTADOS Y FUNCTION PARA MODAL EDITAR PEDIDO
+  const [showEP, setShowEP] = useState(false);
+  const [estadoEP, setEstadoEP] = useState('');
+  const [IdEP, setIdEP] = useState('');
+
+  const handleCloseEP = () => {
+    obtenerPedidos();
+    setShowEP(false)
+  };
+
+  const handleShowEP = (id,estado) => {
+    setEstadoEP(estado);
+    setIdEP(id);
+    setShowEP(true)};
 
   return (
     <>
@@ -199,6 +215,18 @@ export const AdminScreen = () => {
             email={usuarioSelected.email}
             estado={usuarioSelected.estado}
             rol={usuarioSelected.rol}
+          /> : <></>
+
+      }
+      {
+        showEP ?
+
+          <ModalEditarPedido
+            show={handleShowEP}
+            handleClose={handleCloseEP}
+            id={IdEP}
+            estado={estadoEP}
+
           /> : <></>
 
       }
@@ -336,7 +364,7 @@ export const AdminScreen = () => {
                               return(
                                 <>
                                   <span key={ele.id_prod}>
-                                    {ele.nombre + "x" + ele.cantidad}
+                                    {ele.nombre + " x " + ele.cantidad}
                                     </span>
                                 </>
                               )
@@ -347,12 +375,12 @@ export const AdminScreen = () => {
                         <td>{pedido.fecha}</td>
                         <td>{pedido.total}</td>
                         <td>{pedido.estado}</td>
-                        <td><button>EDITAR</button></td>
+                        <td  onClick={() => handleShowEP(pedido._id, pedido.estado)}><button>EDITAR</button></td>
                       </tr>
                     )
                   })
                 }
-                
+
               </tbody>
             </table>
           </> : ''

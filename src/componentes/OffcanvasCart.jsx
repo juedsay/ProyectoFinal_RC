@@ -54,6 +54,11 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
     obtenerCarrito();
     handleCostoTotal();
   }
+  // const handleVaciarCarrito = (e) => {
+  //   e.preventDefault();
+  //   localStorage.setItem('carrito',JSON.stringify([]));
+  // }
+  
   useEffect(() => {
     obtenerCarrito();
     handleCostoTotal();

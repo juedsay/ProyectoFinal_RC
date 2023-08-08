@@ -2,23 +2,25 @@ import { useState } from "react"
 import Header from "../componentes/Header"
 import '../css/pedidoScreen.css'
 import api from "../api/api";
+import { useNavigate } from "react-router";
 export const PedidoScreen = () => {
 
   const [pedidO, setPedido] = useState(JSON.parse(localStorage.getItem('carrito')));
-  const total = localStorage.getItem('total');
+  const [total, setTotal] = useState(localStorage.getItem('total'));
   const user = JSON.parse(localStorage.getItem('user'));
   const [direccion, setDireccion] = useState('');
-  console.log(pedidO);
+  const navigate = useNavigate();
+
   const handlePedido = async (e) => {
     e.preventDefault();
     try {
-      const resp = await api.post('/cart/pedido',{
+      await api.post('/cart/pedido',{
         pedido: pedidO,
         direccion: direccion,
         total: total,
         id_usuario: user.id,
       });
-      console.log(resp);
+      navigate('/mispedidos');
     } catch (error) {
       console.log(error)
     }

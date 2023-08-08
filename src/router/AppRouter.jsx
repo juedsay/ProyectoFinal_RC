@@ -5,6 +5,7 @@ import { RegisterScreen } from "../pages/RegisterScreen";
 import { AdminScreen } from "../pages/AdminScreen";
 import { ProductScreen } from "../pages/ProductScreen";
 import { PedidoScreen } from "../pages/PedidoScreen";
+import { MisPedidosScreen } from "../pages/MisPedidosScreen";
 
 export const AppRouter = () => {
   return (
@@ -17,6 +18,7 @@ export const AppRouter = () => {
                 <Route path="/admin" element={<AdminScreen />}/>
                 <Route path="/product/:id" element={<ProductScreen />}/>
                 <Route path="/pedido" element={<PedidoScreen />}/>
+                <Route path="/mispedidos" element={<MisPedidosScreen />}/>
             </Routes>
         </BrowserRouter>
     </>

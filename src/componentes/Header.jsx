@@ -34,7 +34,7 @@ export const Header = () => {
           <Nav className="me-auto">
             <Nav.Link href="#features">Comidas</Nav.Link>
             <Nav.Link href="#pricing">Contacto</Nav.Link>
-            <Nav.Link href="#pricing">Pedidos</Nav.Link>
+            <NavLink to={'/mispedidos'}>Mis Pedidos</NavLink>
           </Nav>
           <Nav>
             <Nav.Link><FontAwesomeIcon icon={faShoppingCart} onClick={handleShow}/><Badge bg="secondary">2</Badge></Nav.Link>

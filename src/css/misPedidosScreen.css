@@ -1,0 +1,22 @@
+.w100{
+    width: 100%;
+}
+.mispedidos{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.cart-mipedido{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000000;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.pedidos{
+    display: flex;
+    flex-direction: column;
+}

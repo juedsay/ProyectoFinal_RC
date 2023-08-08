@@ -14,39 +14,11 @@ export const HomeScreen = () => {
     const carrito = [];
     localStorage.setItem('carrito',JSON.stringify(carrito))
   }
-  // const navigate = useNavigate();
-  const [username, setUsername] = useState('');
 
-  // const validarUser = async () =>{
-  //   try {
-  //     const resp = await api.get('/auth/validar');
-  //     console.log(resp.status)
-  //     if(resp.status == 200){
-  //       const user = JSON.parse(localStorage.getItem('user'));
-  //       setUsername(user.name);
-  //     }
-  //   } catch (error) {
-  //     console.log(error.response.status)
-  //     if(error.response.status == 401){
-  //       localStorage.removeItem('user');
-  //       localStorage.removeItem('token');
-  //       navigate('/');
-  //     }
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   validarUser();  
-  // },[]);
   return (
     <>
     <Header />
-    {
-      username !== '' ? <h1>Bienvenido {username}</h1> : ''
-    }
       <Banner />
-      <Categorias />
-      {/* <Footer /> */}
     </>
   )
 }

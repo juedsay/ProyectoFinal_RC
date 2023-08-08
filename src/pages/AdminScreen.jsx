@@ -13,6 +13,8 @@ import swal from 'sweetalert';
 
 export const AdminScreen = () => {
 
+
+
   const obtenerUsuarios = async () => {
     try {
       const resp = await api.get('/admin/usuarios');
@@ -44,6 +46,15 @@ export const AdminScreen = () => {
     try {
       await api.delete(`/admin/producto/${id}`);
       obtenerProductos();
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const obtenerPedidos = async () => {
+    try {
+      const resp = await api.get('/cart/pedidos');
+      setPedidos(resp.data.pedidos);
     } catch (error) {
       console.log(error)
     }
@@ -89,6 +100,7 @@ export const AdminScreen = () => {
 
   const [usuarios, setUsuarios] = useState([]);
   const [productos, setProductos] = useState([]);
+  const [pedidos, setPedidos] = useState([]);
 
   // MANEJO DE SWITCHER DE CATEGORIAS ↓ ↓ ↓
   const [showUsers, setShowUsers] = useState(true);
@@ -125,6 +137,7 @@ export const AdminScreen = () => {
   useEffect(() => {
     obtenerUsuarios();
     obtenerProductos();
+    obtenerPedidos();
   }, []);
 
   // ESTADOS Y FUNCTION PARA MODAL EDITAR USUARIO
@@ -304,39 +317,42 @@ export const AdminScreen = () => {
             <table className='tablas'>
               <thead>
                 <tr>
-                  <th>NOMBRE</th>
-                  <th>EMAIL</th>
-                  <th>ROL</th>
+                  <th>PEDIDO</th>
+                  <th>DIRECCION</th>
+                  <th>FECHA</th>
+                  <th>TOTAL</th>
                   <th>ESTADO</th>
-                  <th>ELIMINAR</th>
-                  <th>EDITAR</th>
+                  <th>ACCIONES</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Juan Cruz</td>
-                  <td>juan@gmail.com</td>
-                  <td>usuario</td>
-                  <td>ACTIVO</td>
-                  <td>❌</td>
-                  <td>📝</td>
-                </tr>
-                <tr>
-                  <td>Juan Cruz</td>
-                  <td>juan@gmail.com</td>
-                  <td>usuario</td>
-                  <td>ACTIVO</td>
-                  <td>❌</td>
-                  <td>📝</td>
-                </tr>
-                <tr>
-                  <td>Juan Cruz</td>
-                  <td>juan@gmail.com</td>
-                  <td>usuario</td>
-                  <td>ACTIVO</td>
-                  <td>❌</td>
-                  <td>📝</td>
-                </tr>
+                {
+                  pedidos.map((pedido, index) => {
+                    return(
+                      <tr key={index}>
+                        <td className="pedidos-admin" key={index}>
+                          {
+                            pedido.pedido.map((ele)=> {
+                              return(
+                                <>
+                                  <span key={ele.id_prod}>
+                                    {ele.nombre + "x" + ele.cantidad}
+                                    </span>
+                                </>
+                              )
+                            })
+                          }
+                        </td>
+                        <td>{pedido.direccion}</td>
+                        <td>{pedido.fecha}</td>
+                        <td>{pedido.total}</td>
+                        <td>{pedido.estado}</td>
+                        <td><button>EDITAR</button></td>
+                      </tr>
+                    )
+                  })
+                }
+                
               </tbody>
             </table>
           </> : ''

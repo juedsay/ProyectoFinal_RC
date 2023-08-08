@@ -38,7 +38,8 @@ export const LoginScreen = () => {
         // GUARDAMOS TOKEN EN LOCALSTORAGE
         localStorage.setItem('token',resp.data.token);
         const user = {
-          id: resp.data.id
+          id: resp.data.id,
+          nombre: resp.data.name
         };
         localStorage.setItem('user',JSON.stringify(user));
         Swal.fire({

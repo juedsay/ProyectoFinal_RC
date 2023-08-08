@@ -54,10 +54,11 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
     obtenerCarrito();
     handleCostoTotal();
   }
-  // const handleVaciarCarrito = (e) => {
-  //   e.preventDefault();
-  //   localStorage.setItem('carrito',JSON.stringify([]));
-  // }
+  const handleVaciarCarrito = (e) => {
+    e.preventDefault();
+    const carrito = [];
+    localStorage.setItem('carrito',JSON.stringify(carrito))
+  }
   
   useEffect(() => {
     obtenerCarrito();
@@ -107,7 +108,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
               <>
                 <div className="total">
                   <span>TOTAL: {costoTotal}</span>
-                  <NavLink to='/pedido'><button>HACER PEDIDO</button></NavLink>
+                  <NavLink to='/pedido'><button onClick={handleVaciarCarrito}>HACER PEDIDO</button></NavLink>
                 </div>
               </> : ''
           }

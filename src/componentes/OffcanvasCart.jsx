@@ -4,6 +4,7 @@ import '../css/carrito.css';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { NavLink } from 'react-bootstrap';
 
 
 export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
@@ -100,7 +101,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
             <>
             <div className="total">
               <span>TOTAL: {costoTotal}</span>
-              <button>HACER PEDIDO</button>
+              <NavLink to={'/pedido'}>HACER PEDIDO</NavLink>
             </div>
             </> : ''
           }

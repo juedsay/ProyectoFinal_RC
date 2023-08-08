@@ -19,6 +19,7 @@ export const HomeScreen = () => {
     <>
     <Header />
       <Banner />
+      <Categorias />
     </>
   )
 }

@@ -4,7 +4,8 @@ import '../css/carrito.css';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+
 
 
 export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
@@ -12,7 +13,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
 
   const [carrito, setCarrito] = useState([]);
   const [costoTotal, setCostoTotal] = useState(0);
-
+  const navigate = useNavigate();
   const handleCostoTotal = () => {
     let total = 0;
     carrito.map((prod) => {
@@ -54,11 +55,12 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
     obtenerCarrito();
     handleCostoTotal();
   }
-  const handleVaciarCarrito = (e) => {
-    e.preventDefault();
-    const carrito = [];
-    localStorage.setItem('carrito',JSON.stringify(carrito))
-  }
+  // const handleVaciarCarrito = (e) => {
+  //   e.preventDefault();
+  //   const carrito = [];
+  //   localStorage.setItem('carrito',JSON.stringify(carrito))
+  //   navigate('/pedido')
+  // }
   
   useEffect(() => {
     obtenerCarrito();
@@ -85,7 +87,6 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
                       <div className="info">
                         <span>
                           {prod.nombre}
-                          asdasd
                         </span>
                         <span>
                           <span
@@ -108,7 +109,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
               <>
                 <div className="total">
                   <span>TOTAL: {costoTotal}</span>
-                  <NavLink to='/pedido'><button onClick={handleVaciarCarrito}>HACER PEDIDO</button></NavLink>
+                  <NavLink to='/pedido'><button>HACER PEDIDO</button></NavLink>
                 </div>
               </> : ''
           }

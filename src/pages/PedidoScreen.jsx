@@ -20,6 +20,9 @@ export const PedidoScreen = () => {
         total: total,
         id_usuario: user.id,
       });
+      const carrito = [];
+      localStorage.setItem('carrito',JSON.stringify(carrito))
+      
       navigate('/mispedidos');
     } catch (error) {
       console.log(error)

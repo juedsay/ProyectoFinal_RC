@@ -16,7 +16,7 @@ export const Header = () => {
 
   const handleClose = () => setShowOffCanvas(false);
   const handleShow = () => setShowOffCanvas(true);
-
+  
   return (
     <>
 
@@ -32,8 +32,8 @@ export const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Comidas</Nav.Link>
-            <Nav.Link href="#pricing">Contacto</Nav.Link>
+            <NavLink href="#features">Comidas</NavLink>
+            <NavLink href="#pricing">Contacto</NavLink>
             <NavLink to={'/mispedidos'}>Mis Pedidos</NavLink>
           </Nav>
           <Nav>

@@ -9,11 +9,14 @@ export const MisPedidosScreen = () => {
 
     const obtenerPedidosUser = async () => {
         const user = JSON.parse(localStorage.getItem('user'));
-        try {
-            const resp = await api.get(`/cart/pedido/${user.id}`);
-            setPedidos(resp.data.pedido);
-        } catch (error) {
-            console.log(error)
+        if(user !== null){
+            try {
+                const resp = await api.get(`/cart/pedido/${user.id}`);
+                setPedidos(resp.data.pedido);
+                console.log(resp)
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 
@@ -26,6 +29,7 @@ export const MisPedidosScreen = () => {
             <div className="mispedidos">
                 <h3 className="w100">MIS PEDIDOS</h3>
                 {
+                    pedidos.length !== 0 ? 
                     pedidos.map((pedido) => {
                         
                         return(
@@ -46,21 +50,9 @@ export const MisPedidosScreen = () => {
                                 </div>
                             </div>
                         )
-                    })
+                    }) : <h1>No tienes ningun pedido</h1>
                 }
-                {/* 
-                <div className="cart-mipedido">
-                    <div className="pedidos">
-                        <span>Chicken burger x 2</span>
-                        <span>Chicken burger x 3</span>
-                        <span>Chicken burger x 4</span>
-                        <span>Chicken burger x 10</span>
-                        <span>Chicken burger x 8</span>
-                    </div>
-                    <span>Direccion: Barrio borges calle 10 y 114</span>
-                    <span>Estado: Pendiente</span>
-                    <span>A pagar: $9500</span>
-                </div> */}
+                
             </div>
         </>
     )

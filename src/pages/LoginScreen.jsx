@@ -37,11 +37,9 @@ export const LoginScreen = () => {
         })
         // GUARDAMOS TOKEN EN LOCALSTORAGE
         localStorage.setItem('token',resp.data.token);
-
         const user = {
           id: resp.data.id
         };
-
         localStorage.setItem('user',JSON.stringify(user));
         Swal.fire({
           icon: 'success',
@@ -49,6 +47,11 @@ export const LoginScreen = () => {
           showConfirmButton: false,
           timer: 1500
         }, 1500);
+        if(resp.data.rol == 'Admin'){
+          navigate('/admin');
+        }else{
+          navigate('/');
+        }
         
       } catch (error) {
         console.log(error.response.data.msg)
@@ -57,17 +60,9 @@ export const LoginScreen = () => {
           title: error.response.data.msg,
           showConfirmButton: false,
           timer: 1500
-        })
-        
+        }) 
       }
-      
     }
-
-
-
-
-
-
   }
 
   return (

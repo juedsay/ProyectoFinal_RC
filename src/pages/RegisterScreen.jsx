@@ -3,6 +3,8 @@ import '../css/login.css';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
 import api from '../api/api';
+import Header from '../componentes/Header';
+import { NavLink } from 'react-router-dom';
 
 export const RegisterScreen = () => {
 
@@ -80,7 +82,9 @@ export const RegisterScreen = () => {
 
   return (
     <>
+    <Header />
       <div className="login-container">
+        <h1>REGISTER</h1>
         <form onSubmit={handleLogin} className='form-login'>
           <div className="form-group">
             <input className={errorNombre ? 'input-login input-login-error' : 'input-login'} type="text" placeholder="Nombre"
@@ -115,6 +119,7 @@ export const RegisterScreen = () => {
           </div>
           <button className='btn-login'>Registrarse</button>
         </form>
+        <span><NavLink to={'/login'}>Ya tenes cuenta? Logueate.</NavLink></span>
       </div>
     </>
   )

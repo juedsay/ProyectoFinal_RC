@@ -3,10 +3,18 @@ import '../css/login.css';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
 import api from '../api/api';
+import Header from '../componentes/Header';
+import { NavLink } from 'react-router-dom';
 
 export const LoginScreen = () => {
 
+
   const navigate = useNavigate();
+
+  // if(JSON.parse(localStorage.getItem('user')) !== null){
+  //   location.href = '/'
+  // }
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [msgErrorEmail, setMsgerroremail] = useState(false);
@@ -68,7 +76,9 @@ export const LoginScreen = () => {
 
   return (
     <>
+      <Header />
       <div className="login-container">
+        <h1>LOGIN</h1>
         <form onSubmit={handleLogin} className='form-login'>
           <div className="form-group">
             <input className={msgErrorEmail ? 'input-login input-login-error' : 'input-login'} type="email" placeholder="Email"
@@ -87,7 +97,7 @@ export const LoginScreen = () => {
 
           <button className='btn-login'>Login</button>
         </form>
-        <span><a href="">No tienes cuenta? Create una</a></span>
+        <span><NavLink to={'/register'}>No tienes cuenta? Create una</NavLink></span>
 
       </div>
     </>

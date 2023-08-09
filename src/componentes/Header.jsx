@@ -16,6 +16,7 @@ import swal from 'sweetalert';
 
 export const Header = () => {
   const [showOffCanvas, setShowOffCanvas] = useState(false);
+  const [contadorCart, setContadorCart] = useState(JSON.parse(localStorage.getItem('carrito')).length);
 
   const handleClose = () => setShowOffCanvas(false);
   const handleShow = () => setShowOffCanvas(true);
@@ -36,6 +37,9 @@ export const Header = () => {
     }
     
   }
+  useEffect(() => {
+    setContadorCart(JSON.parse(localStorage.getItem('carrito')).length);
+  }, []);
 
   const handlelogout = () => {
     swal({
@@ -76,7 +80,7 @@ export const Header = () => {
               <Nav.Link><NavLink className="navlink" to={'/mispedidos'}>Mis Pedidos</NavLink></Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link><FontAwesomeIcon icon={faShoppingCart} onClick={handleShow} /><Badge bg="secondary">0</Badge></Nav.Link>
+              <Nav.Link><FontAwesomeIcon icon={faShoppingCart} onClick={handleShow} /><Badge bg="secondary">{contadorCart}</Badge></Nav.Link>
               {
                 user == null ?
                   <Nav.Link><NavLink to={'/login'}><FontAwesomeIcon icon={faUser} /></NavLink></Nav.Link> :

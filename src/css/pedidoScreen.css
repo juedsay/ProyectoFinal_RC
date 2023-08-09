@@ -4,19 +4,39 @@
     flex-wrap: wrap;
 }
 .pedido{
-    width: 50%;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
 }
 .pedido-inner{
     width: 100%;
     display: flex;
     justify-content: space-around;
+    border-bottom: 1px solid #ccc;
 }
 .pedido-inner img{
     width: 100px;
 }
 .total-pedido{
-    width: 50%;
+    width: 100%;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
 }
+
 .form-pedido{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-pedido form{
+    display: flex;
+    flex-direction: column;
+}
+.form-pedido input{
+    width: 300px;
+    margin-bottom: 10px;
+    border: 1px solid;
 }

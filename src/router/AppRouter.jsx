@@ -6,6 +6,7 @@ import { AdminScreen } from "../pages/AdminScreen";
 import { ProductScreen } from "../pages/ProductScreen";
 import { PedidoScreen } from "../pages/PedidoScreen";
 import { MisPedidosScreen } from "../pages/MisPedidosScreen";
+import { Error404 } from "../pages/Error404";
 
 export const AppRouter = () => {
   return (
@@ -19,6 +20,7 @@ export const AppRouter = () => {
                 <Route path="/product/:id" element={<ProductScreen />}/>
                 <Route path="/pedido" element={<PedidoScreen />}/>
                 <Route path="/mispedidos" element={<MisPedidosScreen />}/>
+                <Route path="*" element={<Error404 />}/>
             </Routes>
         </BrowserRouter>
     </>

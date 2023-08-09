@@ -15,8 +15,12 @@
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 20px;
+    margin-right: 10px;
 }
 .pedidos{
     display: flex;
     flex-direction: column;
+}
+.pedidos span{
+    border-bottom: 1px solid #989898;
 }

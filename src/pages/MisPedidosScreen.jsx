@@ -38,7 +38,7 @@ export const MisPedidosScreen = () => {
                                     pedido.pedido.map((ele) => {
                                         return (
                                             <span key={ele.id_prod}>
-                                               {ele.nombre + 'x ' + ele.cantidad}
+                                               {ele.nombre + ' X ' + ele.cantidad}
                                             </span>
                                         )
                                     })

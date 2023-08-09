@@ -4,7 +4,7 @@ import '../css/carrito.css';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 
 
@@ -64,7 +64,9 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
       swal("!","Debe iniciar sesion primero.","error");
       setTimeout(() => {
         location.href = '/login';
-      }, "3000");
+      }, "1500");
+    }else{
+      location.href = '/pedido';
     }
   }
   const handleEliminar = (id) => {

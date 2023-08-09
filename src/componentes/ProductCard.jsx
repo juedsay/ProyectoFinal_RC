@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import '../css/productCard.css';
+import swal from 'sweetalert';
 
  // eslint-disable-next-line react/prop-types
 export const ProductCard = ({ id, img, nombre, precio }) => {
@@ -15,9 +16,9 @@ export const ProductCard = ({ id, img, nombre, precio }) => {
         let carritoLocalStorage = JSON.parse(localStorage.getItem('carrito'));
         if(carritoLocalStorage == null){
             localStorage.setItem('carrito', JSON.stringify(producto));
+            swal("!","Producto añadido.","success");
         }else{
             let productoExite = carritoLocalStorage.filter((prod) => prod.id_prod == producto.id_prod);
-            console.log(productoExite)
             if(productoExite.length !== 0){
                 carritoLocalStorage.forEach(prod => {
                     if(prod.id == producto.id){
@@ -25,9 +26,13 @@ export const ProductCard = ({ id, img, nombre, precio }) => {
                     }
                 });
                 localStorage.setItem('carrito',JSON.stringify(carritoLocalStorage));
+                swal("!","Producto añadido.","success");
+
             }else{
                 carritoLocalStorage.push(producto);
                 localStorage.setItem('carrito',JSON.stringify(carritoLocalStorage));
+                swal("!","Producto añadido.","success");
+
             }
         }
     }

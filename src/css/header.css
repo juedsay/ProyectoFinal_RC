@@ -1,3 +1,11 @@
 .navlink{
     margin-right: 10px !important;
 }
+.Error404{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.Error404 img{
+    width: 800px;
+}

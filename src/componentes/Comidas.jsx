@@ -1,4 +1,4 @@
-
+import '../css/comidas.css'
 
 const Comidas = () => {
     return (

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container, Row, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../css/footer.css';
 
 

@@ -16,7 +16,7 @@ export const Footer = () => {
           <Col md={6} className="text-center text-md-right">
             <p>Hecho con ❤️ y 🍔</p>
           </Col>
-          <Col md={6} className="text-center text-md-right">
+          {/* <Col md={6} className="text-center text-md-right">
             <div className="social-icons">
               <a href="#" className="social-icon">
                 <FontAwesomeIcon icon={faFacebook} />
@@ -28,7 +28,7 @@ export const Footer = () => {
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
             </div>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </footer>

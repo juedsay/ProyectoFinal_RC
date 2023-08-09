@@ -3,7 +3,7 @@ import Comidas from '../componentes/Comidas';
 
 
 
-export const CartaScreen = () => {
+export const ComidaScreen = () => {
   return (
     <>
       <Comidas />

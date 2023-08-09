@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/api";
 import Header from "../componentes/Header"
 import '../css/misPedidosScreen.css'
+import Footer from "../componentes/Footer";
 
 export const MisPedidosScreen = () => {
 
@@ -26,7 +27,6 @@ export const MisPedidosScreen = () => {
         <>
             <Header />
             <div className="mispedidos">
-                <h3 className="w100">MIS PEDIDOS</h3>
                 {
                     pedidos.length !== 0 ? 
                     pedidos.map((pedido, index) => {
@@ -50,10 +50,15 @@ export const MisPedidosScreen = () => {
                                 </div>
                             </div>
                         )
-                    }) : <h1>No tienes ningun pedido</h1>
+                    }) : 
+                    <div className="pedidoss">
+                        <h1>No tienes ningun pedido</h1>
+                    </div>
                 }
                 
             </div>
+            <Footer/>
         </>
+        
     )
 }

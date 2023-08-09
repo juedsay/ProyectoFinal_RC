@@ -6,6 +6,9 @@ body {
     background-color: #fcfcfc;
   }
   
+  .contactoss{
+    height: 70vh !important;
+  }
   
   
   * .superior {
@@ -23,7 +26,6 @@ body {
       align-items: center;
       justify-content: center;
       min-height: 5vh;
-      background: rgb(201, 56, 56);
       
   }
   

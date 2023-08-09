@@ -11,10 +11,6 @@ export const LoginScreen = () => {
 
   const navigate = useNavigate();
 
-  // if(JSON.parse(localStorage.getItem('user')) !== null){
-  //   location.href = '/'
-  // }
-  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [msgErrorEmail, setMsgerroremail] = useState(false);

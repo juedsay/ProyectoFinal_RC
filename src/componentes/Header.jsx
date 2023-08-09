@@ -75,9 +75,8 @@ export const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link><NavLink className="navlink"><span>Comidas</span></NavLink></Nav.Link>
-              <Nav.Link><NavLink className="navlink">Contacto</NavLink></Nav.Link>
               <Nav.Link><NavLink className="navlink" to={'/mispedidos'}>Mis Pedidos</NavLink></Nav.Link>
+              <Nav.Link><NavLink className="navlink" to={'/contacto'}>Contacto</NavLink></Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link><FontAwesomeIcon icon={faShoppingCart} onClick={handleShow} /><Badge bg="secondary">{contadorCart}</Badge></Nav.Link>

@@ -20,7 +20,7 @@ export const AdminScreen = () => {
   const [rol, setRol] = useState('');
 
   const obtenerUsuario = async (req, res) => {
-
+    console.log(user)
     if (user !== null) {
       try {
         const resp = await api.get(`/admin/usuario/${user.id}`)
@@ -31,6 +31,8 @@ export const AdminScreen = () => {
       } catch (error) {
         console.log(error)
       }
+    }else{
+      navigate('/');
     }
     
   }

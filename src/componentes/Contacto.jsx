@@ -1,8 +1,12 @@
 import "../css/contactoScreen.css";
+import Footer from "./Footer";
 
 const Contacto = () => {
   return (
     <>
+    <div className="contactoss">
+
+  
       <div className="separador-texto">
         <h2>Nuestro equipo está formado por</h2>
       </div>
@@ -11,7 +15,7 @@ const Contacto = () => {
         {/* Tarjeta 1 */}
         <div className="cardN">
           <div className="face front">
-            <img src="../img/nosotros/Francisco.jpg" alt="" />
+            <img src="https://avatars.githubusercontent.com/u/104668496?v=4" alt="" />
             <h3>Francisco Leirman</h3>
           </div>
           <div className="face back">
@@ -29,7 +33,7 @@ const Contacto = () => {
         {/* Tarjeta 2 */}
         <div className="cardN">
           <div className="face front">
-            <img src="../img/nosotros/melany.jpg" alt="" />
+            <img src="https://avatars.githubusercontent.com/u/48840855?s=400&u=ed4814918eb39ca14bf7d1f7a1c222fa884ebe76&v=4" alt="" />
             <h3>Juan Cruz Infante</h3>
           </div>
           <div className="face back">
@@ -50,7 +54,7 @@ const Contacto = () => {
         {/* Tarjeta 4 */}
         <div className="cardN">
           <div className="face front">
-            <img src="" alt="" />
+            <img src="https://avatars.githubusercontent.com/u/32204826?v=4" alt="" />
             <h3>Julian Simón</h3>
           </div>
           <div className="face back">
@@ -77,31 +81,8 @@ const Contacto = () => {
           alt=""
         />
       </div>
-
-      <footer className="text-center text-lg-start bg-dark text-light">
-        <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-          <div className="me-5 d-none d-lg-block">
-            <span>
-              Mantente conectado con nosotros a través de nuestras redes
-              sociales:
-            </span>
-          </div>
-          <div className="btn-redes">
-            <a href="./error404.html" className="me-4 text-reset btn-fb">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="./error404.html" className="me-4 text-reset btn-tw">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="./error404.html" className="me-4 text-reset btn-yt">
-              <i className="fab fa-youtube"></i>
-            </a>
-            <a href="./error404.html" className="me-4 text-reset btn-ig">
-              <i className="fab fa-instagram"></i>
-            </a>
-          </div>
-        </section>
-      </footer>
+      <Footer/>
+      </div>
     </>
   );
 };

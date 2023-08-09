@@ -88,7 +88,7 @@ export const RegisterScreen = () => {
         <form onSubmit={handleLogin} className='form-login'>
           <div className="form-group">
             <input className={errorNombre ? 'input-login input-login-error' : 'input-login'} type="text" placeholder="Nombre"
-              value={name} onChange={(e) => setNombre(e.target.value)} minLength={7} />
+              value={name} onChange={(e) => setNombre(e.target.value)} minLength={7} maxLength={30}/>
             {errorNombre ? <>
               <span className='msg-error'>Ingrese un nombre</span>
             </> : ''}
@@ -102,7 +102,7 @@ export const RegisterScreen = () => {
           </div>
           <div className="form-group">
             <input className={errorPassword ? 'input-login input-login-error' : 'input-login'} type="password" placeholder="Contraseña"
-              value={password} onChange={(e) => setPassword(e.target.value)} minLength={6} maxLength={12} />
+              value={password} onChange={(e) => setPassword(e.target.value)} minLength={6} />
             {errorPassword ? <>
               <span className='msg-error'>Ingrese una contraseña</span>
             </> : ''}

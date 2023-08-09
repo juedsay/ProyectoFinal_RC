@@ -289,7 +289,6 @@ export const AdminScreen = () => {
             <li onClick={handleShowUsers}><FontAwesomeIcon icon={faUser} /><span>Usuarios</span></li>
             <li onClick={handleShowProducts}><FontAwesomeIcon icon={faCartShopping} /><span>Productos</span></li>
             <li onClick={handleShowPedidos}><FontAwesomeIcon icon={faPenToSquare} /><span>Pedidos</span></li>
-            <li onClick={handleShowCuenta}><FontAwesomeIcon icon={faHouseUser} /><span>Cuenta</span></li>
           </ul>
         </div>
         {
@@ -303,19 +302,19 @@ export const AdminScreen = () => {
                   <th>ESTADO</th>
                   <th>ELIMINAR</th>
                   <th>EDITAR</th>
-                  <th onClick={handleShowAddUser}>Agregar</th>
+                  <th className='hover' onClick={handleShowAddUser}>Agregar</th>
                 </tr>
               </thead>
               <tbody>
                 {
                   usuarios.map((usuario) => (
                     <tr key={usuario._id}>
-                      <td>{usuario.name}</td>
-                      <td>{usuario.email}</td>
-                      <td>{usuario.rol}</td>
-                      <td>{usuario.estado}</td>
-                      <td onClick={() => handleEliminarUsuario(usuario._id)}>❌</td>
-                      <td onClick={() => showEditUsuario(usuario)} >📝</td>
+                      <td data-cell="Nombre">{usuario.name}</td>
+                      <td data-cell="Email">{usuario.email}</td>
+                      <td data-cell="Rol">{usuario.rol}</td>
+                      <td data-cell="Estado">{usuario.estado}</td>
+                      <td data-cell="Eliminar" onClick={() => handleEliminarUsuario(usuario._id)} className='hover'>❌</td>
+                      <td data-cell="Editar" onClick={() => showEditUsuario(usuario)} className='hover'>📝</td>
                     </tr>
                   ))
                 }
@@ -336,7 +335,7 @@ export const AdminScreen = () => {
                   <th>DETALLE</th>
                   <th>ELIMINAR</th>
                   <th>EDITAR</th>
-                  <th onClick={handleShowAddProducto}>Agregar</th>
+                  <th onClick={handleShowAddProducto} className='hover'>Agregar</th>
                 </tr>
               </thead>
               <tbody>
@@ -344,14 +343,14 @@ export const AdminScreen = () => {
                 {
                   productos.map((prod) => (
                     <tr key={prod._id}>
-                      <td>{prod.nombre}</td>
-                      <td><img src={prod.imagen} alt={prod.nombre} className='img-prod' /></td>
-                      <td>{prod.precio}</td>
-                      <td>{prod.estado}</td>
-                      <td>{prod.categoria}</td>
-                      <td>{prod.detalle}</td>
-                      <td onClick={() => handleEliminarProducto(prod._id)}>❌</td>
-                      <td onClick={() => showEditProducto(prod)}>📝</td>
+                      <td data-cell="Nombre">{prod.nombre}</td>
+                      <td data-cell="Imagen"><img src={prod.imagen} alt={prod.nombre} className='img-prod' /></td>
+                      <td data-cell="Precio">{prod.precio}</td>
+                      <td data-cell="Estado">{prod.estado}</td>
+                      <td data-cell="Categoria">{prod.categoria}</td>
+                      <td data-cell="Detalle">{prod.detalle}</td>
+                      <td data-cell="Eliminar" onClick={() => handleEliminarProducto(prod._id)} className='hover'>❌</td>
+                      <td data-cell="Editar" onClick={() => showEditProducto(prod)} className='hover'>📝</td>
                     </tr>
                   ))
                 }
@@ -377,7 +376,7 @@ export const AdminScreen = () => {
                   pedidos.map((pedido, index) => {
                     return(
                       <tr key={index}>
-                        <td className="pedidos-admin" key={index}>
+                        <td data-cell="Pedido" className="pedidos-admin" key={index}>
                           {
                             pedido.pedido.map((ele)=> {
                               return(
@@ -390,11 +389,11 @@ export const AdminScreen = () => {
                             })
                           }
                         </td>
-                        <td>{pedido.direccion}</td>
-                        <td>{pedido.fecha}</td>
-                        <td>{pedido.total}</td>
-                        <td>{pedido.estado}</td>
-                        <td  onClick={() => handleShowEP(pedido._id, pedido.estado)}><button>EDITAR</button></td>
+                        <td data-cell="Direccion">{pedido.direccion}</td>
+                        <td data-cell="Fecha">{pedido.fecha}</td>
+                        <td data-cell="Total">{pedido.total}</td>
+                        <td data-cell="Estado">{pedido.estado}</td>
+                        <td data-cell="Accion" onClick={() => handleShowEP(pedido._id, pedido.estado)}><button>EDITAR</button></td>
                       </tr>
                     )
                   })

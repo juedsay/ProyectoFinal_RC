@@ -1,16 +1,13 @@
 import React from 'react';
-import DescripcionGrupo from '../componentes/DescripcionGrupo';
-import Integrantes from '../componentes/Integrantes';
-import AnimatedImage from '../componentes/AnimatedImage';
+import Contacto from '../componentes/Contacto';
 
-const ContactoScreen = () => {
+
+
+export const ContactoScreen = () => {
   return (
     <div>
-      <DescripcionGrupo />
-      <Integrantes />
-      <AnimatedImage />
+      <Contacto />
     </div>
   );
 }
 
-export default ContactoScreen;

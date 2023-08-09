@@ -5,27 +5,23 @@ const Comidas = () => {
         <section>
         <div class="container">
             <div class="row">
-                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                    <div class="search__widget d-flex align-items-center justify-content-between ">
-                        <input type="text" placeholder="I'm looking for...."/>
-                         <span>
-                            <i class="ri-search-line">
-                                
-                            </i>
-                         </span>
-                    </div>
+            <div class="col-12 col-md-6">
+                <div class="search__widget d-flex align-items-center justify-content-between">
+                    <input type="text" placeholder="I'm looking for...."/>
+                    <span><i class="ri-search-line"></i></span>
                 </div>
-                <div class="mb-5 col-12 col-sm-6 col-md-6 col-lg-6">
-                    <div class="sorting__widget text-end">
-                        <select class="w-50">
-                            <option>Default</option>
-                            <option value="ascending">Alfabeticamente, A-Z</option>
-                            <option value="descending">Alfabeticamente, Z-A</option>
-                            <option value="low-price">Menor Precio</option>
-                            <option value="high-price">Mayor Precio</option>
-                        </select>
-                    </div>
+            </div>
+            <div class="col-12 col-md-6 text-md-end mb-3">
+                <div class="sorting__widget">
+                    <select class="w-100">
+                        <option>Default</option>
+                        <option value="ascending">Alfabeticamente, A-Z</option>
+                        <option value="descending">Alfabeticamente, Z-A</option>
+                        <option value="low-price">Menor Precio</option>
+                        <option value="high-price">Mayor Precio</option>
+                    </select>
                 </div>
+            </div>
                 <div class="mb-4 col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="product__item">
                         <div class="product__img">

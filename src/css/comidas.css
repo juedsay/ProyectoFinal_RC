@@ -257,3 +257,38 @@ ol, ul {
     cursor: pointer;
     margin: 5px;
 }
+
+.addTOCart__btn {
+    margin-left: 2px;
+    display: block;
+    padding: 3px;
+    background-color: #df2020;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  /* Estilos para pantalla pequeña */
+  @media (max-width: 768px) {
+    .addTOCart__btn {
+      font-size: 0; /* Ocultar el texto original */
+    }
+
+    .addTOCart__btn::after {
+      content: "Agregar";
+      font-size: 16px; /* Restaurar el tamaño de fuente para el nuevo texto */
+    }
+  }
+  .search__widget {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px; /* Margen inferior de 5 pixeles */
+  }
+
+  .sorting__widget {
+    text-align: end; /* Alineación del texto hacia la derecha (end) */
+    margin-bottom: 5px; /* Margen inferior de 5 pixeles */
+  }
+

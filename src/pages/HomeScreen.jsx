@@ -9,7 +9,6 @@ import { Footer } from '../componentes/Footer';
 import swal from 'sweetalert';
 
 
-
 export const HomeScreen = () => {
   if(JSON.parse(localStorage.getItem('carrito')) == null){
     const carrito = [];
@@ -22,6 +21,7 @@ export const HomeScreen = () => {
     <Header />
       <Banner />
       <Categorias />
+      <Footer />
     </>
   )
 }

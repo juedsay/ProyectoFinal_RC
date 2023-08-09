@@ -5,6 +5,10 @@
     padding-top: 50px;
 }
 
+.container-product img{
+    width: 400px;
+}
+
 .info-product{
     width: 50%;
     display: flex;

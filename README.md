@@ -51,7 +51,10 @@ Linkedin: Julian Simon.
 Email: [juedsay@gmail.com](mailto:juedsay@gmail.com)
 
 Linkedin: Juan Cruz Infante.   
-Email: [juaninfantejj@gmail.com](mailto:juaninfantejj@gmail.com)
+Email: [juaninfantejj@gmail.com](mailto:juaninfantejj@gmail.com)  
+
+Linkedin: Francisco Oscar Leirman.  
+Email: [100_dekano@hotmail.com.ar](mailto:100_dekano@hotmail.com.ar)
 
 ¡Gracias por tu interés en nuestro proyecto!
 

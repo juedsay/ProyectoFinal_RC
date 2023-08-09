@@ -3,7 +3,7 @@ import Carta from '../componentes/Carta';
 
 
 
-export const ContactoScreen = () => {
+export const CartaScreen = () => {
   return (
     <div>
       <Carta />

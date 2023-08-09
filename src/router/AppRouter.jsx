@@ -15,6 +15,7 @@ export const AppRouter = () => {
                 <Route path="/register" element={<RegisterScreen />}/>
                 <Route path="/admin" element={<AdminScreen />}/>
                 <Route path="/contacto" element={<ContactoScreen />}/>
+                <Route path="/carta" element={<CartaScreen />}/>
             </Routes>
         </BrowserRouter>
     </>

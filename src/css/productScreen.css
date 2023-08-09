@@ -1,17 +1,20 @@
 .container-product{
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    padding-top: 50px;
 }
+
 .info-product{
     width: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     padding-left: 20px;
 }
 .info-product span{
     margin-bottom: 10px;
+    font-size: 30px;
 }
 
 .info-product button{

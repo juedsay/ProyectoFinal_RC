@@ -46,6 +46,8 @@ export const Header = () => {
       if (resp) {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
+        const carrito = [];
+        localStorage.setItem('carrito', JSON.stringify(carrito));
         location.href = '/';
       }
     })

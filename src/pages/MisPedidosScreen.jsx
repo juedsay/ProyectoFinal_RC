@@ -29,10 +29,11 @@ export const MisPedidosScreen = () => {
                 <h3 className="w100">MIS PEDIDOS</h3>
                 {
                     pedidos.length !== 0 ? 
-                    pedidos.map((pedido) => {
+                    pedidos.map((pedido, index) => {
                         
                         return(
                             <div className="cart-mipedido" key={pedido._id}>
+                                <h3>Orden n°: {index + 1}</h3>
                                 <div className="pedidos">
                                 {
                                     pedido.pedido.map((ele) => {

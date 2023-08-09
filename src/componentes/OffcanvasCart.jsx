@@ -5,6 +5,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 
 
@@ -13,7 +14,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
 
   const [carrito, setCarrito] = useState([]);
   const [costoTotal, setCostoTotal] = useState(0);
-  const navigate = useNavigate();
+
   const handleCostoTotal = () => {
     let total = 0;
     carrito.map((prod) => {
@@ -26,6 +27,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
     const carritoLS = JSON.parse(localStorage.getItem('carrito'));
     if (carritoLS.length !== 0) {
       setCarrito(carritoLS);
+      handleCostoTotal();
     }
   }
 
@@ -55,12 +57,23 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
     obtenerCarrito();
     handleCostoTotal();
   }
-  // const handleVaciarCarrito = (e) => {
-  //   e.preventDefault();
-  //   const carrito = [];
-  //   localStorage.setItem('carrito',JSON.stringify(carrito))
-  //   navigate('/pedido')
-  // }
+
+  const handleHacerPedido = () => {
+    
+    if(JSON.parse(localStorage.getItem('user')) == null){
+      swal("!","Debe iniciar sesion primero.","error");
+      setTimeout(() => {
+        location.href = '/login';
+      }, "3000");
+    }
+  }
+  const handleEliminar = (id) => {
+    const carritoLS = JSON.parse(localStorage.getItem('carrito'));
+    const cart = carritoLS.filter(ele => ele.id_prod !== id);
+    localStorage.setItem('carrito',JSON.stringify(cart));
+    setCarrito(cart);
+    handleCostoTotal();
+  }
   
   useEffect(() => {
     obtenerCarrito();
@@ -99,6 +112,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
                         </span>
                       </div>
                       <span>${prod.precio * prod.cantidad}</span>
+                      <span onClick={() => handleEliminar(prod.id_prod)}>❌</span>
                     </div>
                   </>
                 )
@@ -109,7 +123,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
               <>
                 <div className="total">
                   <span>TOTAL: {costoTotal}</span>
-                  <NavLink to='/pedido'><button>HACER PEDIDO</button></NavLink>
+                  <button onClick={() => handleHacerPedido()}>HACER PEDIDO</button>
                 </div>
               </> : ''
           }

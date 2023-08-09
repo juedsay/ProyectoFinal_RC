@@ -13,7 +13,6 @@ export const MisPedidosScreen = () => {
             try {
                 const resp = await api.get(`/cart/pedido/${user.id}`);
                 setPedidos(resp.data.pedido);
-                console.log(resp)
             } catch (error) {
                 console.log(error)
             }

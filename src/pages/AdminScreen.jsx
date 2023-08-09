@@ -9,13 +9,31 @@ import { ModalEditarProducto } from '../componentes/ModalEditarProducto';
 import { ModalAgregarProducto } from '../componentes/ModalAgregarProducto';
 import Header from '../componentes/Header';
 import api from '../api/api';
-
 import swal from 'sweetalert';
 import { ModalEditarPedido } from '../componentes/ModalEditarPedido';
+import { useNavigate } from 'react-router';
 
 export const AdminScreen = () => {
 
+  const navigate = useNavigate();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [rol, setRol] = useState('');
 
+  const obtenerUsuario = async (req, res) => {
+
+    if (user !== null) {
+      try {
+        const resp = await api.get(`/admin/usuario/${user.id}`)
+        if(resp.data.usuario.rol !== 'Admin'){
+          // location.href = '/';
+          navigate('/');
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    
+  }
 
   const obtenerUsuarios = async () => {
     try {
@@ -140,6 +158,7 @@ export const AdminScreen = () => {
     obtenerUsuarios();
     obtenerProductos();
     obtenerPedidos();
+    obtenerUsuario();
   }, []);
 
   // ESTADOS Y FUNCTION PARA MODAL EDITAR USUARIO

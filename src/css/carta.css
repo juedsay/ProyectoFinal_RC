@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none!important;
+    color: unset!important;
+    background: #df2020;
+}
+
+body {
+    background: #fcfcfc;
+    font-family: "Istok Web",sans-serif;
+}
+
+section {
+    padding: 60px 0;
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    width: 100%;
+    padding-right: .75rem;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: .75rem;
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y)*-1);
+    margin-right: calc(var(--bs-gutter-x)*-0.5);
+    margin-left: calc(var(--bs-gutter-x)*-0.5);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "RocknRoll One",sans-serif!important;
+}
+.h6, h6 {
+    font-size: 1rem;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.addTOCart__btn {
+    border: none;
+    padding: 7px 25px;
+    background: #df2020;
+    color: #fff;
+    border-radius: 5px;
+    font-size: .9rem;
+}
+
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}

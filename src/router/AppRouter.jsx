@@ -7,6 +7,7 @@ import { ProductScreen } from "../pages/ProductScreen";
 import { PedidoScreen } from "../pages/PedidoScreen";
 import { MisPedidosScreen } from "../pages/MisPedidosScreen";
 import { Error404 } from "../pages/Error404";
+import { ContactoScreen } from "../pages/ContactoScreen";
 
 export const AppRouter = () => {
   return (
@@ -20,6 +21,7 @@ export const AppRouter = () => {
                 <Route path="/product/:id" element={<ProductScreen />}/>
                 <Route path="/pedido" element={<PedidoScreen />}/>
                 <Route path="/mispedidos" element={<MisPedidosScreen />}/>
+                <Route path="/contacto" element={<ContactoScreen />}/>
                 <Route path="*" element={<Error404 />}/>
             </Routes>
         </BrowserRouter>

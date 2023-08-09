@@ -5,6 +5,7 @@ import { CartaScreen } from "../pages/CartaScreen";
 import { RegisterScreen } from "../pages/RegisterScreen";
 import { AdminScreen } from "../pages/AdminScreen";
 import { ContactoScreen } from "../pages/ContatoScreen";
+import { ComidaScreen } from "../pages/ComidaScreen";
 
 
 
@@ -19,6 +20,7 @@ export const AppRouter = () => {
                 <Route path="/admin" element={<AdminScreen />}/>
                 <Route path="/contacto" element={<ContactoScreen />}/>
                 <Route path="/carta" element={<CartaScreen />}/>
+                <Route path="/carta" element={<ComidaScreen />}/>
             </Routes>
         </BrowserRouter>
     </>

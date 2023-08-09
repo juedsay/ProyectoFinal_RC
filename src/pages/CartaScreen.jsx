@@ -1,12 +1,12 @@
 import React from 'react';
-import Carta from '../componentes/Carta';
+import Tabla from '../componentes/Tabla';
 
 
 
 export const CartaScreen = () => {
   return (
-    <div>
-      <Carta />
-    </div>
+    <>
+      <Tabla />
+    </>
   );
 }

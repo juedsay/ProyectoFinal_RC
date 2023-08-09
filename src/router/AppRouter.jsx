@@ -1,9 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomeScreen } from "../pages/HomeScreen";
 import { LoginScreen } from "../pages/LoginScreen";
+import { CartaScreen } from "../pages/CartaScreen";
 import { RegisterScreen } from "../pages/RegisterScreen";
 import { AdminScreen } from "../pages/AdminScreen";
 import { ContactoScreen } from "../pages/ContatoScreen";
+
+
 
 export const AppRouter = () => {
   return (

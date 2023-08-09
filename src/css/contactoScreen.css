@@ -175,3 +175,9 @@ font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans
   width: 40%;
   border-radius: 50%
 }
+
+a {
+  text-decoration: none!important;
+  color: unset!important;
+  background: #ffffff;
+}

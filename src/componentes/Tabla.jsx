@@ -1,6 +1,6 @@
-import '../css/carta.css'
+import '../css/tabla.css'
 
-export const Carta = () => {
+const Tabla = () => {
     return (
       <section class="p-6">
       <div class="container">
@@ -61,3 +61,5 @@ export const Carta = () => {
   </section>
   );
 }
+
+export default Tabla;

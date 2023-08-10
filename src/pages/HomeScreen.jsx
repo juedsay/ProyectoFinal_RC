@@ -18,10 +18,8 @@ export const HomeScreen = () => {
 
   return (
     <>
-    <Header />
+      <Header />
       <Banner />
       <Categorias />
-      <Footer />
-    </>
-  )
+    </>)
 }

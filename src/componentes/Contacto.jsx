@@ -75,11 +75,7 @@ const Contacto = () => {
         <p className="proyecto"></p>
         <h2 className=""></h2>
         <br />
-        <img
-          src="/src/assets/logocubiertos.png"
-          className="iconproyect"
-          alt=""
-        />
+        
       </div>
       <Footer/>
       </div>

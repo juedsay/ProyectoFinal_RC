@@ -79,7 +79,7 @@ export const Header = () => {
               <Nav.Link><NavLink className="navlink" to={'/contacto'}>Contacto</NavLink></Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link><FontAwesomeIcon icon={faShoppingCart} onClick={handleShow} /><Badge bg="secondary">{contadorCart}</Badge></Nav.Link>
+              <Nav.Link><FontAwesomeIcon icon={faShoppingCart} onClick={handleShow} /><Badge bg="secondary"></Badge></Nav.Link>
               {
                 user == null ?
                   <Nav.Link><NavLink to={'/login'}><FontAwesomeIcon icon={faUser} /></NavLink></Nav.Link> :

@@ -39,8 +39,9 @@ export const AdminScreen = () => {
 
   const obtenerUsuarios = async () => {
     try {
-      const resp = await api.get('/admin/usuarios');
+      const resp = await api.get('/admin/usuarios').then((resp)=>{
       setUsuarios(resp.data.usuarios);
+});
     } catch (error) {
       console.log(error)
     }

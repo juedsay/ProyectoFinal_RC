@@ -11,6 +11,7 @@ import OffcanvasCart from '../componentes/OffcanvasCart';
 import '../css/header.css';
 import api from '../api/api';
 import swal from 'sweetalert';
+import logo from '../assets/logo.png'
 
 
 
@@ -69,9 +70,9 @@ export const Header = () => {
         handleClose={handleClose}
         placement={'end'} />
 
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar collapseOnSelect expand="lg" fixed="top" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand><NavLink to={'/'}>Delivery Fast</NavLink></Navbar.Brand>
+          <Navbar.Brand><NavLink to={'/'}> <img src={logo} className='logo-navbar' /> FastLibery </NavLink></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

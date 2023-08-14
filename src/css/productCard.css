@@ -21,7 +21,8 @@ a{
     overflow: hidden;
 }
 .card img{
-    max-width: 100px;
+    width: 80px;
+    height: 80px;
     margin-bottom: 20px;
 }
 

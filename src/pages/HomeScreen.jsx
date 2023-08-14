@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router';
 import { Header } from '../componentes/Header';
 import { Footer } from '../componentes/Footer';
 import swal from 'sweetalert';
+import { Bannerdos } from '../componentes/Bannerdos';
 
 
 export const HomeScreen = () => {
@@ -20,6 +21,7 @@ export const HomeScreen = () => {
     <>
       <Header />
       <Banner />
+      <Bannerdos />
       <Categorias />
     </>)
 }

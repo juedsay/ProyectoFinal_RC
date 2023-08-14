@@ -1,0 +1,49 @@
+.bannerdos-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 200px;
+}
+.bannerdos-title{
+    width: 100%;
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+.bannerdos-card{
+    width: 33%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.bannerdos-card img{
+    width: 250px;
+}
+.bannerdos-card h1{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 576px){
+    .bannerdos-container{
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+    .bannerdos-card{
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .bannerdos-card h1{
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .bannerdos-title{
+        font-weight: 900;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+}

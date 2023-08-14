@@ -1,16 +1,21 @@
 .w100{
     width: 100%;
+    text-align: center;
 }
 .mispedidos{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    height: 90vh;
+    padding-top: 100px;
     justify-content: center;
 }
 .cart-mipedido{
     width: 300px;
+    max-height: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     border: 1px solid #000000;
     padding: 10px;
     border-radius: 10px;

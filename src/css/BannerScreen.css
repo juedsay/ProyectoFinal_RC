@@ -33,6 +33,9 @@ h5{
     background-color: #f46084;
     transition: .3s ease;
 }
+.banner-btn a{
+    background-color: transparent !important;
+}
 
 @media screen and (max-width: 768px) {
     .container-banner{

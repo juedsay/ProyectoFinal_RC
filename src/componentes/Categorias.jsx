@@ -52,7 +52,7 @@ export const Categorias = () => {
 
     return (
         <>
-            <div className='categorias-container'>
+            <div className='categorias-container' id="categorias">
                 <h1>Pedí lo que más te guste!</h1>
                 <div className="categorias">
                     <button onClick={handleAll} className={all ? 'btn-active' : ''}>Todo</button>

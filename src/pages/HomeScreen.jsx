@@ -23,5 +23,6 @@ export const HomeScreen = () => {
       <Banner />
       <Bannerdos />
       <Categorias />
+      <Footer />
     </>)
 }

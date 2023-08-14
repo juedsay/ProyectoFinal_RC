@@ -27,6 +27,7 @@ export const MisPedidosScreen = () => {
         <>
             <Header />
             <div className="mispedidos">
+                <h3 className="w100">Mis pedidos</h3>
                 {
                     pedidos.length !== 0 ? 
                     pedidos.map((pedido, index) => {

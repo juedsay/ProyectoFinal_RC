@@ -8,7 +8,7 @@ export const ProductCardCarrito = ({img, nombre, cantidad, precio}) => {
             <div className="info">
                 <span>
                 {nombre}
-                asdasd
+  
                 </span>
                 <span>
                     <span>-</span><span>{cantidad}</span><span>+</span>

@@ -5,8 +5,6 @@ const Contacto = () => {
   return (
     <>
     <div className="contactoss">
-
-  
       <div className="separador-texto">
         <h2>Nuestro equipo está formado por</h2>
       </div>
@@ -77,8 +75,8 @@ const Contacto = () => {
         <br />
         
       </div>
-      <Footer/>
       </div>
+      <Footer/>
     </>
   );
 };

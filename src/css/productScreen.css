@@ -39,6 +39,80 @@
     color: #242424;
 }
 
+.coment-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+h6{
+    width: 600px;
+    text-align: left;
+}
+.form{
+    width: 600px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.form input{
+    width: 450px;
+    padding: 5px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+}
+.form img{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    object-fit: contain;
+    padding: 2px;
+}
+.form button{
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.comentarios-section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+.coment-card{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.coment-card img{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    object-fit: contain;
+    padding: 2px;
+    margin-right: 10px;
+}
+.card-info{
+    display: flex;
+    flex-direction: column;
+}
+.card-info .fecha{
+    color: #868686;
+    font-weight: lighter;
+    font-size: 13px;
+    margin-left: 10px;
+}
+
+
 @media screen and (max-width:576px){
     .container-product{
         flex-direction: column;
@@ -58,4 +132,19 @@
         font-size: 16px;
     }
 
+    h6{
+        width: 100%;
+    }
+    .form{
+        width: 100%;
+    }
+    .form input{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .coment-card{
+        width: 100%;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
 }

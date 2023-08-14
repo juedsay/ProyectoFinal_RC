@@ -1,5 +1,5 @@
 import entrega from "../assets/4741565.jpg"
-import "../css/bannerScreen.css"
+import "../css/BannerScreen.css"
 
 export const Banner = () => {
     return (

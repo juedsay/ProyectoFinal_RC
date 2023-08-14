@@ -2,41 +2,73 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    padding-top: 100px;
+    flex-direction: column;
+    align-items: center;
 }
 .pedido{
-    width: 100%;
+    width: 600px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 20px;
 }
 .pedido-inner{
-    width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-around;
+    padding: 20px 0px;
     border-bottom: 1px solid #ccc;
 }
 .pedido-inner img{
     width: 100px;
 }
 .total-pedido{
-    width: 100%;
-    border: 1px solid #ccc;
+    width: 600px;
     display: flex;
-    justify-content: center;
+    margin-top: 20px;
 }
 
 .form-pedido{
-    width: 100%;
+    width: 600px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: 20px;
 }
 .form-pedido form{
     display: flex;
     flex-direction: column;
 }
 .form-pedido input{
-    width: 300px;
+    width: 600px;
     margin-bottom: 10px;
-    border: 1px solid;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+}
+.btn-pedido{
+    width: 100px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width:576px){
+    .mi-pedido{
+        align-items: flex-start;
+    }
+    .pedido{
+    width: 100%;
+    }
+    .total-pedido{
+        width: 100%;
+    }
+    
+    .form-pedido{
+        width: 100%;
+    }
+    .form-pedido input{
+        width: 300px;
+    }
+    .btn-pedido{
+        width: 100px;
+        margin-top: 10px;
+    }
 }

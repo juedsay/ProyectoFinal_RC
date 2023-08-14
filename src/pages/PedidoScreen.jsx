@@ -45,22 +45,22 @@ export const PedidoScreen = () => {
                 <div className="pedido-inner" key={ele.id_prod}>
                   <img src={ele.imagen} alt={ele.nombre} />
                   <span>{ele.cantidad} x {ele.nombre}</span>
-                  <span>{ele.precio * ele.cantidad}</span>
+                  <span>$ {ele.precio * ele.cantidad}</span>
                 </div>)
             })
           }
         </div>
         <div className="total-pedido">
-          <h3>TOTAL : {total}</h3>
+          <h3>TOTAL : $ {total}</h3>
         </div>
         <div className="form-pedido">
-          <h3>LUGAR DE ENVIO</h3>
+          <h4>Direecion de envio: </h4>
           <form onSubmit={handlePedido}>
             <input type="text"
-              placeholder="direccion"
+              placeholder="Direccion"
               value={direccion} onChange={(e) => setDireccion(e.target.value)}
               maxLength={200} />
-            <button>COMPRAR</button>
+            <button className="btn-pedido">COMPRAR</button>
           </form>
         </div>
       </div>

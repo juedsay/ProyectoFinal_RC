@@ -66,9 +66,9 @@ export const ProductScreen = () => {
         <img src={producto.imagen} alt="" />
         <div className="info-product">
           <span>{producto.nombre}</span>
-          <span>Precio: {producto.precio}</span>
           <span>Contiene: {producto.detalle}</span>
           <span>Categoria: {producto.categoria}</span>
+          <span>Precio: {producto.precio}</span>
           <button onClick={(e) => agregarACarrito(e)}>Agregar</button>
         </div>
       </div>

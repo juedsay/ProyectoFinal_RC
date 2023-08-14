@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    padding-top: 50px;
+    padding-top: 100px;
 }
 
 .container-product img{
@@ -18,9 +18,19 @@
 }
 .info-product span{
     margin-bottom: 10px;
-    font-size: 30px;
 }
 
 .info-product button{
     width: 100px;
+}
+
+.info-product span:first-child{
+    font-size: 50px;
+    font-weight: 700;
+}
+.info-product span:nth-child(2){
+    font-size: 30px;
+}
+.info-product span:nth-child(3){
+    color: #242424;
 }

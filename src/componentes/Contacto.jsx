@@ -38,8 +38,8 @@ const Contacto = () => {
             <h3>Juan Cruz</h3>
             <p>
               Edad: 24 <br />
-              Hobbies: En mis ratos libres veo peliculas de terror, me encanta
-              escuchar musica y hacer yoga.
+              Hobbies: En mis ratos libres veo peliculas, me encanta
+              programar y hacer deporte.
             </p>
             <div className="link">
               <a href="https://github.com/juancinfante">Github</a>

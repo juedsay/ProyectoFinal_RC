@@ -9,7 +9,7 @@ export const Banner = () => {
                     <h2>Una manera fácil de hacer un pedido</h2>
                     <h3>¿HAMBRIENTO?</h3>
                     <h5>Solo espera la comida en tu puerta</h5>
-                    <button className="banner-btn">ORDENE YA</button>
+                    <button className="banner-btn">ORDENE</button>
                     <button className="banner-btn">VER TODO</button>
                     
                 </div>

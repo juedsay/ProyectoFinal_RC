@@ -68,8 +68,7 @@ export const RegisterScreen = () => {
             navigate('/')
           }, 1500);
         } catch (error) {
-        // swal("❌",error.response.data.msg);
-        console.log(error);
+        swal("❌",error.response.data.msg);
         }
       } else {
         setErrorNombre(false);

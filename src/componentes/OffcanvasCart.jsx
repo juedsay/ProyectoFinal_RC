@@ -11,7 +11,7 @@ import swal from 'sweetalert';
 
 export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
 
-
+  const navigate = useNavigate();
   const [carrito, setCarrito] = useState([]);
 
   const handleCostoTotal = () => {
@@ -60,10 +60,10 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
     if(JSON.parse(localStorage.getItem('user')) == null){
       swal("!","Debe iniciar sesion primero.","error");
       setTimeout(() => {
-        location.href = '/login';
+        navigate('/login');
       }, "1500");
     }else{
-      location.href = '/pedido';
+      navigate('/pedido');
     }
   }
   const handleEliminar = (id) => {

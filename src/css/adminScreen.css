@@ -1,8 +1,9 @@
 .admin-container{
     display: flex;
-    margin-top: 100px;
 }
-
+.txt-align-center{
+    text-align: center;
+}
 
 .secciones{
     margin-right: 20px;
@@ -64,6 +65,15 @@
     .secciones li{
         border: 0;
         flex-direction: column;
+    }
+    .tablas{
+        margin-bottom: 70px;
+    }
+    .tablas tbody tr{
+        border-bottom: 1px solid #808080;
+    }
+    .txt-align-center{
+        margin-top: 100px;
     }
     
 }

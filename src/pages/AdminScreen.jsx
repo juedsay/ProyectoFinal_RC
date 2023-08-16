@@ -276,7 +276,8 @@ export const AdminScreen = () => {
 
 
       <Header />
-      <div className='admin-container'>
+          <h1 className='w-100 txt-align-center'>ADMIN</h1>
+        <div className='admin-container'>
         <div className='secciones'>
           <ul>
             <li onClick={handleShowUsers}><FontAwesomeIcon icon={faUser} /><span>Usuarios</span></li>

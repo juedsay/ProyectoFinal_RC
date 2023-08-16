@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import api from "../api/api";
@@ -39,7 +40,7 @@ export const ProductScreen = () => {
     let carritoLocalStorage = JSON.parse(localStorage.getItem('carrito'));
     if (carritoLocalStorage == null) {
       localStorage.setItem('carrito', JSON.stringify(product));
-      swal("!", "Producto añadido.", "success");
+      swal("✅", "Añadido a carrito");
     } else {
       let productoExite = carritoLocalStorage.filter((prod) => prod.id_prod == product.id_prod);
       if (productoExite.length !== 0) {
@@ -49,12 +50,14 @@ export const ProductScreen = () => {
           }
         });
         localStorage.setItem('carrito', JSON.stringify(carritoLocalStorage));
-        swal("!", "Producto añadido.", "success");
+        swal("✅", "Añadido a carrito");
+
 
       } else {
         carritoLocalStorage.push(product);
         localStorage.setItem('carrito', JSON.stringify(carritoLocalStorage));
-        swal("!", "Producto añadido.", "success");
+        swal("✅", "Añadido a carrito");
+
 
       }
     }
@@ -98,14 +101,14 @@ export const ProductScreen = () => {
           fecha: fecha
         })
         console.log(resp)
-        swal("✅","Gracias por comentar!", "success");
+        swal("✅","Gracias por comentar!");
         obtenerComentarios();
         setTexto('');
       } catch (error) {
         console.log(error)
       }
     }else{
-      swal("❌","Ingrese un comentario!", "error");
+      swal("❌","Ingrese un comentario!");
     }
   }
 
@@ -162,7 +165,6 @@ export const ProductScreen = () => {
           }
         </div>
       </div>
-      <Footer />
     </>
   )
 }

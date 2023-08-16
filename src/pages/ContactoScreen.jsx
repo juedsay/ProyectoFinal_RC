@@ -7,7 +7,7 @@ export const ContactoScreen = () => {
   return (
     <div>
         <Header />
-      <Contacto />
+        <Contacto />
     </div>
   );
 }

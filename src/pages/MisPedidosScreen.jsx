@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import api from "../api/api";
 import Header from "../componentes/Header"
@@ -30,7 +31,7 @@ export const MisPedidosScreen = () => {
                 <h3 className="w100">Mis pedidos</h3>
                 {
                     pedidos.length !== 0 ? 
-                    pedidos.map((pedido, index) => {
+                    pedidos.toReversed().map((pedido, index) => {
                         
                         return(
                             <div className="cart-mipedido" key={pedido._id}>
@@ -58,7 +59,6 @@ export const MisPedidosScreen = () => {
                 }
                 
             </div>
-            <Footer/>
         </>
         
     )

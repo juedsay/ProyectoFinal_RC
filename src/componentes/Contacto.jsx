@@ -1,5 +1,4 @@
 import "../css/contactoScreen.css";
-import Footer from "./Footer";
 
 const Contacto = () => {
   return (
@@ -76,7 +75,6 @@ const Contacto = () => {
         
       </div>
       </div>
-      <Footer/>
     </>
   );
 };

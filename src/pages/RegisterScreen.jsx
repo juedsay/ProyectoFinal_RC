@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import '../css/login.css';
-import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
 import api from '../api/api';
 import Header from '../componentes/Header';
 import { NavLink } from 'react-router-dom';
+import swal from 'sweetalert';
 
 export const RegisterScreen = () => {
 
@@ -51,22 +51,13 @@ export const RegisterScreen = () => {
             id: resp.data.id
           };
           localStorage.setItem('user', JSON.stringify(user));
-          Swal.fire({
-            icon: 'success',
-            title: resp.data.msg,
-            showConfirmButton: false,
-            timer: 1500
-          })
+          swal("✅","Registrado con exito!");
           setTimeout(() => {
             navigate('/')
           }, 1500);
         } catch (error) {
-          Swal.fire({
-            icon: 'error',
-            title: error.response.data.msg,
-            showConfirmButton: false,
-            timer: 1500
-          })
+        swal("❌",error.response.data.msg);
+
         }
       } else {
         setErrorNombre(false);

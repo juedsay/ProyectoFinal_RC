@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import '../css/login.css';
-import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
 import api from '../api/api';
 import Header from '../componentes/Header';
 import { NavLink } from 'react-router-dom';
+import swal from 'sweetalert';
 
 export const LoginScreen = () => {
 
@@ -46,12 +46,7 @@ export const LoginScreen = () => {
           nombre: resp.data.name
         };
         localStorage.setItem('user',JSON.stringify(user));
-        Swal.fire({
-          icon: 'success',
-          title: resp.data.msg,
-          showConfirmButton: false,
-          timer: 1500
-        }, 1500);
+        swal("✅","Logueado con exito!");
         if(resp.data.rol == 'Admin'){
           navigate('/admin');
         }else{
@@ -60,12 +55,7 @@ export const LoginScreen = () => {
         
       } catch (error) {
         console.log(error.response.data.msg)
-        Swal.fire({
-          icon: 'error',
-          title: error.response.data.msg,
-          showConfirmButton: false,
-          timer: 1500
-        }) 
+        swal("❌",error.response.data.msg);
       }
     }
   }

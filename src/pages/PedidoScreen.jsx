@@ -24,8 +24,11 @@ export const PedidoScreen = () => {
           id_usuario: user.id,
         });
         const carrito = [];
-        localStorage.setItem('carrito', JSON.stringify(carrito))
-        navigate('/mispedidos');
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        swal("Gracias por su compra! Su pedido fue enviado.");
+        setTimeout(() => {
+          navigate('/mispedidos');
+        }, "1500");
       } catch (error) {
         console.log(error)
       }

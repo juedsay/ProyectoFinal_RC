@@ -16,7 +16,7 @@ export const ProductCard = ({ id, img, nombre, precio }) => {
         let carritoLocalStorage = JSON.parse(localStorage.getItem('carrito'));
         if(carritoLocalStorage == null){
             localStorage.setItem('carrito', JSON.stringify(producto));
-            swal("!","Producto añadido.","success");
+            swal("✅","Producto añadido.");
         }else{
             let productoExite = carritoLocalStorage.filter((prod) => prod.id_prod == producto.id_prod);
             if(productoExite.length !== 0){
@@ -26,13 +26,11 @@ export const ProductCard = ({ id, img, nombre, precio }) => {
                     }
                 });
                 localStorage.setItem('carrito',JSON.stringify(carritoLocalStorage));
-                swal("!","Producto añadido.","success");
-
+                swal("✅","Añadido a  carrito");
             }else{
                 carritoLocalStorage.push(producto);
                 localStorage.setItem('carrito',JSON.stringify(carritoLocalStorage));
-                swal("!","Producto añadido.","success");
-
+                swal("✅","Añadido a carrito");
             }
         }
     }

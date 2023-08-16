@@ -1,4 +1,4 @@
-import '../css/bannerdos.css';
+import '../css/bannerDos.css';
 import img1 from '../assets/takeaway1.png'
 import img2 from '../assets/takeaway2.png'
 import img3 from '../assets/takeaway3.png'

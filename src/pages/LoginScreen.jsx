@@ -54,7 +54,6 @@ export const LoginScreen = () => {
         }
         
       } catch (error) {
-        console.log(error.response.data.msg)
         swal("❌",error.response.data.msg);
       }
     }

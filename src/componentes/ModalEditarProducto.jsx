@@ -26,12 +26,7 @@ export const ModalEditarProducto = ({ show, handleClose, id, nombre, estado, pre
         imagen,
         categoria
 			});
-			swal({
-        icon: 'success',
-        text: resp.data.msg,
-        button: false,
-        timer: 1500
-      });
+      swal("✅",resp.data.msg)
       setTimeout(() => {
         handleClose()
     }, "1500");
@@ -43,12 +38,7 @@ export const ModalEditarProducto = ({ show, handleClose, id, nombre, estado, pre
   const handleEditar = (e) => {
     e.preventDefault();
     if(nombrE.length == 0 || detallE.length == 0 || imageN == 0){
-      swal({
-        icon: 'error',
-        text: 'Complete los campos que faltan.',
-        button: false,
-        timer: 1500
-      });
+      swal("❌","Complete los campos que faltan.")
     }else{
       editarProducto(id, nombrE, estadO, preciO, detallE, imageN, categoriA);
     }
@@ -81,7 +71,7 @@ export const ModalEditarProducto = ({ show, handleClose, id, nombre, estado, pre
                 </> : 
                 categoriA == 'Pizza' ? 
                 <>
-                    <option>Hamburguesa</option>
+                    <option>Hambur</option>
                     <option>Papas</option>
                 </> : 
                 categoriA == 'Papas' ? 

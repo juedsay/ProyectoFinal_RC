@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import '../css/login.css';
 import { useNavigate } from 'react-router';
 import api from '../api/api';
 import Header from '../componentes/Header';
 import { NavLink } from 'react-router-dom';
 import swal from 'sweetalert';
+import emailjs from '@emailjs/browser';
 
 export const RegisterScreen = () => {
 
@@ -19,6 +20,16 @@ export const RegisterScreen = () => {
   const [errorRePassword, setErrorRePassword] = useState(false);
   const [errorCD, setErrorCD] = useState(false);
 
+  const form = useRef();
+
+  const sendEmail = () => {
+    emailjs.sendForm('service_znhnesn', 'template_n4jgzds', form.current, '6OD2bAOrMsCgc0ukQ')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -51,13 +62,14 @@ export const RegisterScreen = () => {
             id: resp.data.id
           };
           localStorage.setItem('user', JSON.stringify(user));
+          sendEmail();
           swal("✅","Registrado con exito!");
           setTimeout(() => {
             navigate('/')
           }, 1500);
         } catch (error) {
-        swal("❌",error.response.data.msg);
-
+        // swal("❌",error.response.data.msg);
+        console.log(error);
         }
       } else {
         setErrorNombre(false);
@@ -76,17 +88,17 @@ export const RegisterScreen = () => {
     <Header />
       <div className="login-container">
         <h1>REGISTER</h1>
-        <form onSubmit={handleLogin} className='form-login'>
+        <form onSubmit={handleLogin} className='form-login' ref={form}>
           <div className="form-group">
             <input className={errorNombre ? 'input-login input-login-error' : 'input-login'} type="text" placeholder="Nombre"
-              value={name} onChange={(e) => setNombre(e.target.value)} minLength={7} maxLength={30}/>
+              value={name} onChange={(e) => setNombre(e.target.value)} minLength={7} maxLength={30} name='user_name'/>
             {errorNombre ? <>
               <span className='msg-error'>Ingrese un nombre</span>
             </> : ''}
           </div>
           <div className="form-group">
             <input className={errorEmail ? 'input-login input-login-error' : 'input-login'} type="email" placeholder="Email"
-              value={email} onChange={(e) => setEmail(e.target.value)} />
+              value={email} onChange={(e) => setEmail(e.target.value)} name='user_email'/>
             {errorEmail ? <>
               <span className='msg-error'>Ingrese un email</span>
             </> : ''}

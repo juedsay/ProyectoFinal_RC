@@ -11,12 +11,21 @@ export const ProductCard = ({ id, img, nombre, precio }) => {
         precio: precio,
         cantidad: 1
     }
+    const handleCostoTotal = () => {
+        let total = 0;
+        let carrito = JSON.parse(localStorage.getItem('carrito'));
+        carrito.map((prod) => {
+          total += (prod.cantidad * prod.precio);
+        })
+        localStorage.setItem('total',total);
+      }
     const agregarACarrito = (e) => {
         e.preventDefault();
         let carritoLocalStorage = JSON.parse(localStorage.getItem('carrito'));
         if(carritoLocalStorage == null){
             localStorage.setItem('carrito', JSON.stringify(producto));
             swal("✅","Producto añadido.");
+            handleCostoTotal();
         }else{
             let productoExite = carritoLocalStorage.filter((prod) => prod.id_prod == producto.id_prod);
             if(productoExite.length !== 0){
@@ -27,12 +36,15 @@ export const ProductCard = ({ id, img, nombre, precio }) => {
                 });
                 localStorage.setItem('carrito',JSON.stringify(carritoLocalStorage));
                 swal("✅","Añadido a  carrito");
+                handleCostoTotal();
             }else{
                 carritoLocalStorage.push(producto);
                 localStorage.setItem('carrito',JSON.stringify(carritoLocalStorage));
                 swal("✅","Añadido a carrito");
+                handleCostoTotal();
             }
         }
+        
     }
     return (
         <>

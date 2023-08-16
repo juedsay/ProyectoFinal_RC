@@ -22,12 +22,8 @@ export const ModalEditarUsuario = ({ show, handleClose, id, name, email, estado,
 				estado,
 				rol,
 			});
-			swal({
-        icon: 'success',
-        text: resp.data.msg,
-        button: false,
-        timer: 1500
-      });
+      swal("✅","Usuario actualizado.");
+
       setTimeout(() => {
         handleClose()
       }, "1500");
@@ -39,12 +35,8 @@ export const ModalEditarUsuario = ({ show, handleClose, id, name, email, estado,
   const handleEditar = (e) => {
     e.preventDefault();
     if(namE.length == 0 || emaiL.length == 0){
-      swal({
-        icon: 'error',
-        text: 'Complete los campos que faltan.',
-        button: false,
-        timer: 1500
-      });
+      swal("❌","Complete los datos que faltan.");
+
     }else{
       editarUsuario(id,namE,emaiL,estadO,roL);
     }

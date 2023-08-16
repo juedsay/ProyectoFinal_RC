@@ -13,21 +13,18 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
 
 
   const [carrito, setCarrito] = useState([]);
-  const [costoTotal, setCostoTotal] = useState(0);
 
   const handleCostoTotal = () => {
     let total = 0;
     carrito.map((prod) => {
       total += (prod.cantidad * prod.precio);
     })
-    setCostoTotal(total);
     localStorage.setItem('total',total);
   }
   const obtenerCarrito = () => {
     const carritoLS = JSON.parse(localStorage.getItem('carrito'));
     if (carritoLS.length !== 0) {
       setCarrito(carritoLS);
-      handleCostoTotal();
     }
   }
 
@@ -74,12 +71,10 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
     const cart = carritoLS.filter(ele => ele.id_prod !== id);
     localStorage.setItem('carrito',JSON.stringify(cart));
     setCarrito(cart);
-    handleCostoTotal();
   }
   
   useEffect(() => {
     obtenerCarrito();
-    handleCostoTotal();
   }, [show]);
 
 
@@ -94,10 +89,10 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
           {
             carrito.length !== 0 ?
 
-              carrito.map((prod) => {
+              carrito.map((prod,index) => {
                 return (
                   <>
-                    <div className="product-carrito-container" key={prod.id_prod}>
+                    <div className="product-carrito-container" key={index}>
                       <img src={prod.imagen} alt="" />
                       <div className="info">
                         <span>
@@ -114,7 +109,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
                         </span>
                       </div>
                       <span>${prod.precio * prod.cantidad}</span>
-                      <span onClick={() => handleEliminar(prod.id_prod)}>❌</span>
+                      <span onClick={() => handleEliminar(prod.id_prod)} className='hover'>❌</span>
                     </div>
                   </>
                 )
@@ -124,7 +119,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
             carrito.length !== 0 ?
               <>
                 <div className="total">
-                  <span>TOTAL: {costoTotal}</span>
+                  <span>TOTAL: {JSON.parse(localStorage.getItem('total'))}</span>
                   <button onClick={() => handleHacerPedido()}>HACER PEDIDO</button>
                 </div>
               </> : ''

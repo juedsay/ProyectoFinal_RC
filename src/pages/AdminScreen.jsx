@@ -20,7 +20,6 @@ export const AdminScreen = () => {
   const [rol, setRol] = useState('');
 
   const obtenerUsuario = async (req, res) => {
-    console.log(user)
     if (user !== null) {
       try {
         const resp = await api.get(`/admin/usuario/${user.id}`)
@@ -52,7 +51,7 @@ export const AdminScreen = () => {
       await api.delete(`/admin/usuario/${id}`);
       obtenerUsuarios();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -92,11 +91,7 @@ export const AdminScreen = () => {
     }).then(resp => {
       if (resp) {
         eliminarUsuario(id);
-        swal({
-          text: "Usuario eliminado.",
-          icon: "success",
-          timer: "1500"
-        })
+        swal("✅","Usuario eliminado.");
 
       }
     })
@@ -111,12 +106,7 @@ export const AdminScreen = () => {
     }).then(resp => {
       if (resp) {
         eliminarProducto(id);
-        swal({
-          text: "Producto eliminado.",
-          icon: "success",
-          timer: "1500"
-        })
-
+        swal("✅","Producto eliminado.");
       }
     })
   }
@@ -376,15 +366,15 @@ export const AdminScreen = () => {
               </thead>
               <tbody>
                 {
-                  pedidos.map((pedido, index) => {
+                  pedidos.map((pedido) => {
                     return(
-                      <tr key={index}>
-                        <td data-cell="Pedido" className="pedidos-admin" key={index}>
+                      <tr key={pedido._id}>
+                        <td data-cell="Pedido" className="pedidos-admin">
                           {
                             pedido.pedido.map((ele)=> {
                               return(
                                 <>
-                                  <span key={ele.id_prod}>
+                                  <span>
                                     {ele.nombre + " x " + ele.cantidad}
                                     </span>
                                 </>

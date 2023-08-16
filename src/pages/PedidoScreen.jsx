@@ -25,7 +25,7 @@ export const PedidoScreen = () => {
         });
         const carrito = [];
         localStorage.setItem('carrito', JSON.stringify(carrito));
-        swal("Gracias por su compra! Su pedido fue enviado.");
+        swal("✅","Gracias por su compra! Su pedido fue enviado.");
         setTimeout(() => {
           navigate('/mispedidos');
         }, "1500");
@@ -33,7 +33,7 @@ export const PedidoScreen = () => {
         console.log(error)
       }
     }else{
-      swal('ERROR','Coloque una direccion!',"error");
+      swal("❌",'Coloque una direccion!');
     }
 
   }

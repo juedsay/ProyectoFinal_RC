@@ -12,3 +12,9 @@
 .logo-navbar{
     width: 50px;
 }
+
+@media screen and (max-width: 576px){
+    .navlink{
+        margin: 10px;
+    }
+}

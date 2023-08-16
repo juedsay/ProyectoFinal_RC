@@ -15,19 +15,10 @@ export const ModalAgregarUsuario = ({show, handleClose}) => {
     const handleAgregar = async(e) => {
         e.preventDefault();
         if(name == '' || email == '' || password == '' || repassword == ''){
-            swal({
-                icon: 'error',
-                text: 'Complete los datos que faltan.',
-                button: false,
-                timer: 1500
-              });
+              swal("❌","Complete los datos que faltan.");
         }else if(password !== repassword){
-            swal({
-                icon: 'error',
-                text: 'Las contraseñas deben coincidir',
-                button: false,
-                timer: 1500
-              });
+          swal("❌","Las contraseñas deben coincidir.");
+
         }else{
             try {
                 const resp = await api.post('/auth/register',{
@@ -35,11 +26,7 @@ export const ModalAgregarUsuario = ({show, handleClose}) => {
                     email,
                     password
                 });
-                swal({
-                    text: resp.data.msg,
-                    button: false,
-                    timer: 1500
-                  });
+              swal("✅",resp.data.msg);
                   setTimeout(() => {
                     handleClose()
                 }, "1500");

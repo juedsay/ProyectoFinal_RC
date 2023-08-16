@@ -16,18 +16,12 @@ export const ModalEditarPedido = ({ show, handleClose, id, estado }) => {
                 _id,
                 estado,
             });
-            console.log(resp)
-            swal({
-                icon: 'success',
-                text: resp.data.msg,
-                button: false,
-                timer: 1500
-            });
+            swal("✅",resp.data.msg);
             setTimeout(() => {
                 handleClose()
             }, "1500");
         } catch (error) {
-            console.log(error);
+            alert(error);
         }
     }
 const handleEditar = (e) => {
@@ -44,7 +38,7 @@ const handleEditar = (e) => {
                 <form onSubmit={handleEditar}>
                     <select name="select" value={estad0} onChange={(e) => setEstad0(e.target.value)}>
                         <option>{estado}</option>
-                        {estado == 'Pendiende' ? <>
+                        {estado == 'Pendiente' ? <>
                             <option>Realizado</option>
                         </> : <option>Pendiente</option>}
                     </select>

@@ -72,26 +72,26 @@ export const Header = () => {
 
       <Navbar collapseOnSelect expand="lg" fixed="top" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand><NavLink to={'/'}> <img src={logo} className='logo-navbar' /> FastLibery </NavLink></Navbar.Brand>
+          <Navbar.Brand><NavLink to={'/'}><img src={logo} className='logo-navbar' /> FastLibery </NavLink></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link><NavLink className="navlink" to={'/mispedidos'}>Mis Pedidos</NavLink></Nav.Link>
-              <Nav.Link><NavLink className="navlink" to={'/contacto'}>Contacto</NavLink></Nav.Link>
+              <NavLink className="navlink" to={'/mispedidos'}>Mis Pedidos</NavLink>
+            <NavLink className="navlink" to={'/contacto'}>Contacto</NavLink>
             </Nav>
             <Nav>
-              <Nav.Link><FontAwesomeIcon icon={faShoppingCart} onClick={handleShow} /><Badge bg="secondary"></Badge></Nav.Link>
+              <NavLink className="navlink"  onClick={handleShow} >Carrito <FontAwesomeIcon icon={faShoppingCart}/>{}</NavLink>
               {
                 user == null ?
-                  <Nav.Link><NavLink to={'/login'}><FontAwesomeIcon icon={faUser} /></NavLink></Nav.Link> :
+                <NavLink to={'/login'} className="navlink">Cuenta <FontAwesomeIcon icon={faUser} /></NavLink> :
                   rol == 'Admin' ?
                     <>
-                      <Nav.Link><NavLink to={'/Admin'}>ADMIN</NavLink></Nav.Link>
-                      <Nav.Link><NavLink onClick={handlelogout}>LOGOUT</NavLink></Nav.Link>
+                    <NavLink to={'/Admin'} className="navlink">Admin</NavLink>
+                    <NavLink onClick={handlelogout} className="navlink">Salir</NavLink>
                     </> :
                     <>
-                      <Nav.Link><NavLink>{user.nombre}</NavLink></Nav.Link>
-                      <Nav.Link><NavLink onClick={handlelogout}>LOGOUT</NavLink></Nav.Link>
+                    <NavLink className="navlink">{user.nombre}</NavLink>
+                    <NavLink onClick={handlelogout} className="navlink">Salir</NavLink>
                     </>
               }
 

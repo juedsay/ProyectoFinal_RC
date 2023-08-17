@@ -14,9 +14,8 @@ export const ProductScreen = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const [producto, setProducto] = useState([]);
   const [comentarios, setComentarios] = useState([]);
-  const [username, setUsername] = useState(user.nombre);
+  const [username, setUsername] = useState('');
   const [texto, setTexto] = useState('');
-
   const product = {
     id_prod: producto._id,
     nombre: producto.nombre,
@@ -76,38 +75,45 @@ export const ProductScreen = () => {
 
   const comentar = async (e) => {
     e.preventDefault();
-    let date = new Date();
-    let horas = '';
-    let minutos = '';
-    if(date.getHours() < 10){
-      horas = '0' + date.getHours();
-    }else{
-      horas = date.getHours();
-    }
-    if(date.getMinutes() < 10){
-      minutos = '0' + date.getMinutes();
-    }else{
-      minutos = date.getMinutes();
-    }
-    let fecha = date.getDate()+'/'+ (date.getMonth()+1) +'/'+ date.getFullYear() + '  ' + horas + ':' + minutos;
-    
-
-    if(texto.length !== 0){
-      try {
-        const resp = await api.post('comentarios/comentar', {
-          id_prod: params.id,
-          nombre_user: username,
-          texto: texto,
-          fecha: fecha
-        })
-        swal("✅","Gracias por comentar!");
-        obtenerComentarios();
-        setTexto('');
-      } catch (error) {
-        console.log(error)
+    if (user !== null) {
+      let date = new Date();
+      let horas = '';
+      let minutos = '';
+      if (date.getHours() < 10) {
+        horas = '0' + date.getHours();
+      } else {
+        horas = date.getHours();
       }
-    }else{
-      swal("❌","Ingrese un comentario!");
+      if (date.getMinutes() < 10) {
+        minutos = '0' + date.getMinutes();
+      } else {
+        minutos = date.getMinutes();
+      }
+      let fecha = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '  ' + horas + ':' + minutos;
+
+
+      if (texto.length !== 0) {
+        try {
+          const resp = await api.post('comentarios/comentar', {
+            id_prod: params.id,
+            nombre_user: username,
+            texto: texto,
+            fecha: fecha
+          })
+          swal("✅", "Gracias por comentar!");
+          obtenerComentarios();
+          setTexto('');
+        } catch (error) {
+          console.log(error)
+        }
+      } else {
+        swal("❌", "Ingrese un comentario!");
+      }
+    } else {
+      swal("❗", "Debe iniciar sesion primero.");
+      setTimeout(() => {
+        navigate('/login');
+      }, 1500);
     }
   }
 
@@ -135,7 +141,7 @@ export const ProductScreen = () => {
         <div className="form">
           <img src="https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png" alt="" />
           <form onSubmit={comentar}>
-            <input type="text" placeholder="Dejar comentario" value={texto} onChange={(e) => setTexto(e.target.value)}/>
+            <input type="text" placeholder="Dejar comentario" value={texto} onChange={(e) => setTexto(e.target.value)} />
             <button>Enviar</button>
           </form>
         </div>

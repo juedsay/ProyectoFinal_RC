@@ -77,7 +77,7 @@ export const Header = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <NavLink className="navlink" to={'/mispedidos'}>Mis Pedidos</NavLink>
-            <NavLink className="navlink" to={'/contacto'}>Contacto</NavLink>
+            {/* <NavLink className="navlink" to={'/contacto'}>Contacto</NavLink> */}
             </Nav>
             <Nav>
               <NavLink className="navlink"  onClick={handleShow} >Carrito <FontAwesomeIcon icon={faShoppingCart}/>{}</NavLink>

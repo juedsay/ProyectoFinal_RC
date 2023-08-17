@@ -3,7 +3,10 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
-
+.navlink-card{
+    display: flex;
+    flex-direction: column;
+}
 a{
     text-decoration: none !important;
     color: black !important;

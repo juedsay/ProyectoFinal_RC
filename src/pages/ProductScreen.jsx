@@ -100,7 +100,6 @@ export const ProductScreen = () => {
           texto: texto,
           fecha: fecha
         })
-        console.log(resp)
         swal("✅","Gracias por comentar!");
         obtenerComentarios();
         setTexto('');

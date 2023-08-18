@@ -9,12 +9,12 @@ export const Bannerdos = () => {
         <div className="bannerdos-container">
             <h1 className='bannerdos-title'>Nuestro servicio</h1>
             <div className="bannerdos-card">
-                <img src={img1} alt="" />
-                <h1>Envio en minutos..</h1>
+                <img src={img2} alt="" />
+                <h1>Preparamos tu pedido</h1>
             </div>
             <div className="bannerdos-card">
-                <img src={img2} alt="" />
-                <h1>Seguimiento del envio</h1>
+                <img src={img1} alt="" />
+                <h1>Envio en minutos..</h1>
             </div>
             <div className="bannerdos-card">
                 <img src={img3} alt="" />

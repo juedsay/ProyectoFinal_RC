@@ -3,33 +3,48 @@
     text-align: center;
 }
 .mispedidos{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    height: 90vh;
     padding-top: 100px;
-    justify-content: center;
-}
-.cart-mipedido{
-    width: 300px;
-    max-height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid #000000;
+    align-items: center;
+}
+.cart-mipedido{
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -1px -1px 7px 2px rgba(0,0,0,0.11);
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 20px;
-    margin-right: 10px;
 }
-.pedidos{
+.pedido-inn{
+    width: 100%;
     display: flex;
-    flex-direction: column;
-}
-.pedidos span{
-    border-bottom: 1px solid #989898;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
 }
 
-.pedidoss{
-    height: 70vh;
+.pedido-inn:nth-last-child(1){
+    background-color: #2424243e;
+}
+.pedido-inn:nth-last-child(1) span{
+    background-color: transparent;
+}
+.recordatorio{
+    width: 450px;
+    font-size: 10px;
+    margin-bottom: 15px;
+}
+@media screen and (max-width: 576px){
+    .mispedidos{
+        width: 100vw;
+        padding-right: 10px;
+    }
+    .cart-mipedido{
+        width: 100vw;
+    }
+    .recordatorio{
+        width: 100vw;
+    }
 }

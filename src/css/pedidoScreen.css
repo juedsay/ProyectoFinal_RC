@@ -8,7 +8,6 @@
 }
 .pedido{
     width: 600px;
-    border: 1px solid #ccc;
     border-radius: 10px;
 }
 .pedido-inner{
@@ -25,6 +24,9 @@
     width: 600px;
     display: flex;
     margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
 }
 
 .form-pedido{
@@ -37,17 +39,29 @@
 .form-pedido form{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 .form-pedido input{
-    width: 600px;
+    width: 100% !important;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 10px;
 }
+
 .btn-pedido{
-    width: 100px;
-    margin-top: 10px;
+    width: 100%;
+    border: none;
+    padding: 10px 0;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: -1px -1px 7px 2px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+.btn-container{
+    display: flex;
+    width: 100%;
+    justify-content: end;
 }
 
 @media screen and (max-width:576px){
@@ -65,10 +79,8 @@
         width: 100%;
     }
     .form-pedido input{
-        width: 300px;
     }
-    .btn-pedido{
-        width: 100px;
-        margin-top: 10px;
+    .btn-container button{
+        width: 100%;
     }
 }

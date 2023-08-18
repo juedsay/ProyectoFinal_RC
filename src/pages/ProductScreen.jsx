@@ -14,7 +14,6 @@ export const ProductScreen = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const [producto, setProducto] = useState([]);
   const [comentarios, setComentarios] = useState([]);
-  const [username, setUsername] = useState('');
   const [texto, setTexto] = useState('');
   const product = {
     id_prod: producto._id,
@@ -91,15 +90,15 @@ export const ProductScreen = () => {
       }
       let fecha = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '  ' + horas + ':' + minutos;
 
-
       if (texto.length !== 0) {
         try {
           const resp = await api.post('comentarios/comentar', {
             id_prod: params.id,
-            nombre_user: username,
+            nombre_user: user.name,
             texto: texto,
             fecha: fecha
           })
+          console.log(resp)
           swal("✅", "Gracias por comentar!");
           obtenerComentarios();
           setTexto('');
@@ -117,7 +116,6 @@ export const ProductScreen = () => {
     }
   }
 
-
   useEffect(() => {
     obtenerProducto();
     obtenerComentarios();
@@ -133,7 +131,9 @@ export const ProductScreen = () => {
           <span>Contiene: {producto.detalle}</span>
           <span>Categoria: {producto.categoria}</span>
           <span>Precio: {producto.precio}</span>
-          <button onClick={(e) => agregarACarrito(e)}>Agregar</button>
+          <div className="btn_agregar-container">
+            <button className="btn_agregar" onClick={(e) => agregarACarrito(e)}>Agregar a carrito</button>
+          </div>
         </div>
       </div>
       <div className="coment-container">
@@ -149,10 +149,13 @@ export const ProductScreen = () => {
           comentarios.length == 0 ?
             <>
               <h6> 0 Comentarios</h6>
-            </> :
+            </> : comentarios.length > 1 ? 
             <>
-              <h6>{comentarios.length} Comentarios</h6>
+              <h6> {comentarios.length} Comentarios</h6>
+            </> : <>
+            <h6> 1 Comentario</h6>
             </>
+            
         }
         <div className="comentarios-section">
           {

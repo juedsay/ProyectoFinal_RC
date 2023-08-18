@@ -54,7 +54,7 @@ export const ProductCard = ({ id, img, nombre, precio }) => {
                     <span>{nombre}</span>
                 </NavLink>
                 <div className='price-btn'>
-                    <span>{precio}</span>
+                    <span>$ {precio}</span>
                     <button onClick={(e) => agregarACarrito(e)}>Añadir</button>
                 </div>
             </div>

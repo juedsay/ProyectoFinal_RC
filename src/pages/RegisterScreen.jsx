@@ -58,8 +58,10 @@ export const RegisterScreen = () => {
           });
           // GUARDAMOS TOKEN EN LOCALSTORAGE
           localStorage.setItem('token', resp.data.token);
+          console.log(resp)
           const user = {
-            id: resp.data.id
+            id: resp.data.id,
+            name: resp.data.name
           };
           localStorage.setItem('user', JSON.stringify(user));
           sendEmail();

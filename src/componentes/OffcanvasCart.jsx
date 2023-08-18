@@ -19,7 +19,7 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
     carrito.map((prod) => {
       total += (prod.cantidad * prod.precio);
     })
-    localStorage.setItem('total',total);
+    localStorage.setItem('total', total);
   }
   const obtenerCarrito = () => {
     const carritoLS = JSON.parse(localStorage.getItem('carrito'));
@@ -56,23 +56,23 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
   }
 
   const handleHacerPedido = () => {
-    
-    if(JSON.parse(localStorage.getItem('user')) == null){
-      swal("!","Debe iniciar sesion primero.","error");
+
+    if (JSON.parse(localStorage.getItem('user')) == null) {
+      swal("!", "Debe iniciar sesion primero.", "error");
       setTimeout(() => {
         navigate('/login');
       }, "1500");
-    }else{
+    } else {
       navigate('/pedido');
     }
   }
   const handleEliminar = (id) => {
     const carritoLS = JSON.parse(localStorage.getItem('carrito'));
     const cart = carritoLS.filter(ele => ele.id_prod !== id);
-    localStorage.setItem('carrito',JSON.stringify(cart));
+    localStorage.setItem('carrito', JSON.stringify(cart));
     setCarrito(cart);
   }
-  
+
   useEffect(() => {
     obtenerCarrito();
   }, [show]);
@@ -89,38 +89,46 @@ export const OffcanvasCart = ({ name, show, handleShow, handleClose }) => {
           {
             carrito.length !== 0 ?
 
-              carrito.map((prod,index) => {
+              carrito.map((prod, index) => {
                 return (
                   <>
                     <div className="product-carrito-container" key={index}>
-                      <img src={prod.imagen} alt="" />
-                      <div className="info">
-                        <span>
-                          {prod.nombre}
-                        </span>
-                        <span>
-                          <span
-                            onClick={() => handleRestar(prod.id_prod)}
-                            className='boton-sr'>-</span>
-                          <span>{prod.cantidad}</span>
+                      <div className="product-carrito">
+                        <img src={prod.imagen} alt="" />
+                        <div className="info">
+                          <span>
+                            {prod.nombre}
+                          </span>
+                          <span>${prod.precio * prod.cantidad}</span>
+                        </div>
+                        <div className="info-btns">
+                          <span onClick={() => handleRestar(prod.id_prod)}
+                            className='boton-sr hover'>
+                            -
+                          </span>
+                          <span className='cantidad'>{prod.cantidad}</span>
                           <span
                             onClick={() => handleSumar(prod.id_prod)}
-                            className='boton-sr'>+</span>
-                        </span>
-                      </div>
-                      <span>${prod.precio * prod.cantidad}</span>
-                      <span onClick={() => handleEliminar(prod.id_prod)} className='hover'>❌</span>
+                            className='boton-sr hover'>+</span>
+                        <span onClick={() => handleEliminar(prod.id_prod)} className='hover btn-eliminar'>❌</span>
+                        </div>
+                      </div>            
                     </div>
                   </>
                 )
-              }) : <h1>Carrito vacio</h1>
+              }) : <h6 className='w-100'>El carrito se encuentra vacio</h6>
 
           }{
             carrito.length !== 0 ?
               <>
                 <div className="total">
-                  <span>TOTAL: {JSON.parse(localStorage.getItem('total'))}</span>
-                  <button onClick={() => handleHacerPedido()}>HACER PEDIDO</button>
+                  <div className="total-inner">
+                  <span>Total</span>
+                  <span>${JSON.parse(localStorage.getItem('total'))}</span>
+                  </div>
+                  <div className='btn-carrito'>
+                    <button onClick={() => handleHacerPedido()}>HACER PEDIDO</button>
+                  </div>
                 </div>
               </> : ''
           }

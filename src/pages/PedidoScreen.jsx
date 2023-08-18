@@ -41,6 +41,7 @@ export const PedidoScreen = () => {
     <>
       <Header />
       <div className="mi-pedido">
+        <h1>Pedido</h1>
         <div className="pedido">
           {
             pedidO.map((ele) => {
@@ -54,16 +55,19 @@ export const PedidoScreen = () => {
           }
         </div>
         <div className="total-pedido">
-          <h3>TOTAL : $ {total}</h3>
+          <span>Total</span>
+          <span>$ {total}</span>
         </div>
         <div className="form-pedido">
-          <h4>Direecion de envio: </h4>
+          <h4>Direccion de envio: </h4>
           <form onSubmit={handlePedido}>
             <input type="text"
               placeholder="Direccion"
               value={direccion} onChange={(e) => setDireccion(e.target.value)}
               maxLength={200} />
-            <button className="btn-pedido">COMPRAR</button>
+          <div className="btn-container">
+            <button className="btn-pedido">Realizar pedido</button>
+          </div>
           </form>
         </div>
       </div>

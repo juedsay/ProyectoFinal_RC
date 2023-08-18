@@ -11,7 +11,7 @@ export const MisPedidosScreen = () => {
 
     const obtenerPedidosUser = async () => {
         const user = JSON.parse(localStorage.getItem('user'));
-        if(user !== null){
+        if (user !== null) {
             try {
                 const resp = await api.get(`/cart/pedido/${user.id}`);
                 setPedidos(resp.data.pedido);
@@ -28,38 +28,66 @@ export const MisPedidosScreen = () => {
         <>
             <Header />
             <div className="mispedidos">
-                <h3 className="w100">Mis pedidos</h3>
                 {
                     pedidos.length !== 0 ? 
-                    pedidos.toReversed().map((pedido, index) => {
-                        
-                        return(
-                            <div className="cart-mipedido" key={pedido._id}>
-                                <h3>Orden n°: {index + 1}</h3>
-                                <div className="pedidos">
-                                {
-                                    pedido.pedido.map((ele) => {
-                                        return (
-                                            <span key={ele.id_prod}>
-                                               {ele.nombre + ' X ' + ele.cantidad}
-                                            </span>
-                                        )
-                                    })
-                                }
-                                <span>{'A pagar: $' + pedido.total}</span>
-                                <span>{'Direccion: ' + pedido.direccion}</span>
-                                <span>{'Estado: ' + pedido.estado}</span>
-                                </div>
-                            </div>
-                        )
-                    }) : 
-                    <div className="pedidoss">
-                        <h1>No tienes ningun pedido</h1>
-                    </div>
+                    <>
+                    <span className="recordatorio">* Una vez realizado el pedido, su pedido entra en estado `Pendiente`, luego a `Realizado` que es cuando se le envia el pedido. (promedio de demora 20min)</span>
+                    </> : ''
                 }
-                
+
+                {
+                    pedidos.length !== 0 ?
+                        pedidos.toReversed().map((pedido, index) => {
+
+                            return (
+                                <>
+                                <div className="cart-mipedido" key={pedido._id}>
+                                    <h5>Orden n° {index + 1}</h5>
+                                    {
+                                        pedido.pedido.map((ele) => {
+                                            return (
+                                                <span
+                                                    key={ele.id_prod}
+                                                    className="pedido-inn">
+                                                    <span>
+                                                        {ele.nombre}
+                                                    </span>
+                                                    <span>
+                                                        {' X ' + ele.cantidad}
+                                                    </span>
+                                                </span>
+                                            )
+                                        })
+                                    }
+                                    <span className="pedido-inn">
+                                        <span>{'A pagar:'}</span>
+                                        <span>{'$' + pedido.total}</span>
+                                    </span>
+                                    <span className="pedido-inn">
+                                        <span>
+                                            {'Direccion:'}
+                                        </span>
+                                        <span>
+                                            {pedido.direccion}
+                                        </span>
+                                    </span>
+                                    <span className="pedido-inn">
+                                        <span>{'Estado:'}</span>
+                                        <span>{pedido.estado}</span>
+                                    </span>
+                                </div>                           
+                                </>
+                            )
+                        })
+                        
+                        :
+                        <div className="pedidoss">
+                            <h1>No tienes ningun pedido</h1>
+                        </div>
+                }
+
             </div>
         </>
-        
+
     )
 }

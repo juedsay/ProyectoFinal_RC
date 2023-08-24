@@ -16,6 +16,8 @@ Para el backend, puedes acceder al repositorio correspondiente [aquí](https://g
 
 - Explora una amplia gama de platillos.
 - Agrega y elimina elementos del carrito de compras.
+- Agrega, elimina, edita productos y usuarios desde admin.
+- Realiza comentarios de los productos.
 - Procesa y realiza pedidos.
 - Interfaz de usuario intuitiva y atractiva.
 - Integración con el backend para la gestión de datos.

@@ -92,7 +92,9 @@ export const RegisterScreen = () => {
         <form onSubmit={handleLogin} className='form-login' ref={form}>
           <div className="form-group">
             <input className={errorNombre ? 'input-login input-login-error' : 'input-login'} type="text" placeholder="Nombre"
-              value={name} onChange={(e) => setNombre(e.target.value)} minLength={7} maxLength={30} name='user_name'/>
+              value={name} onChange={(e) => setNombre(e.target.value)} minLength={7} maxLength={20} name='user_name'
+              pattern="[a-zA-Z]+" title='Ingrese solo letras.'
+              />
             {errorNombre ? <>
               <span className='msg-error'>Ingrese un nombre</span>
             </> : ''}

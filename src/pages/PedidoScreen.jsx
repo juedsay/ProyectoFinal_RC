@@ -64,7 +64,7 @@ export const PedidoScreen = () => {
             <input type="text"
               placeholder="Direccion"
               value={direccion} onChange={(e) => setDireccion(e.target.value)}
-              maxLength={200} />
+              maxLength={50} />
           <div className="btn-container">
             <button className="btn-pedido">Realizar pedido</button>
           </div>
